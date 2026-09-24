@@ -50,36 +50,31 @@ export function RecruitExperience() {
       <SiteHeader onRecruitClick={restartSequence} />
 
       {/*
-        ≤1024: bold right/bottom crop via oversized graphic + overflow-x-hidden
-        CTA in flex mt-auto (not clipped by absolute bottom)
+        ≤1024 Flex column (시안 1):
+        1) body  2) stand band (below body only)  3) CTA left of stand foot
       */}
       <div
         aria-live="polite"
-        className="relative flex min-h-[100svh] flex-col overflow-x-hidden pc:hidden"
+        className="relative flex min-h-[100svh] flex-col overflow-x-hidden px-[17px] pb-[max(16px,env(safe-area-inset-bottom))] pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden"
       >
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-        >
-          {/*
-            right-anchored: only right + pillar-bottom crop.
-            mask left-top keeps shade bottom + right chain inside the box.
-          */}
-          <div className="recruit-stand-graphic fluid-gradient-motion absolute aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]" />
+        <div className="relative z-20 w-full max-w-[340px] shrink-0 tab:max-w-[min(52vw,520px)]">
+          <RecruitBody
+            mode={mode}
+            isFirstParagraphVisible={isFirstParagraphVisible}
+            isSecondParagraphVisible={isSecondParagraphVisible}
+            variant="mobile"
+          />
         </div>
 
-        <div className="relative z-20 flex min-h-[100svh] flex-col px-[17px] pb-[max(16px,env(safe-area-inset-bottom))] pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)]">
-          <div className="w-full max-w-[340px] shrink-0 tab:max-w-[min(52vw,520px)]">
-            <RecruitBody
-              mode={mode}
-              isFirstParagraphVisible={isFirstParagraphVisible}
-              isSecondParagraphVisible={isSecondParagraphVisible}
-              variant="mobile"
-            />
-          </div>
+        {/* Stand lives only in this band — cannot climb over body */}
+        <div className="relative z-0 mt-6 flex min-h-0 flex-1 flex-col overflow-hidden">
+          <div
+            aria-hidden="true"
+            className="recruit-stand-graphic fluid-gradient-motion pointer-events-none absolute aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]"
+          />
 
           <div
-            className={`recruit-cta-mobile z-20 mt-auto min-h-fit max-w-full shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-6 text-left text-[30px] leading-[1.2] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:text-[clamp(30px,3.9vw,40px)] ${
+            className={`recruit-cta-mobile relative z-20 mt-auto min-h-fit max-w-[min(46vw,200px)] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-4 text-left text-[30px] leading-[1.2] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:max-w-[min(40vw,240px)] tab:text-[clamp(30px,3.9vw,40px)] ${
               isBottomVisible ? "opacity-100" : "opacity-0"
             }`}
           >

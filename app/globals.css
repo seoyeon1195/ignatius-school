@@ -279,9 +279,9 @@ body {
 }
 
 /*
-  Mobile/tablet (≤1024) — recruit/donate only:
-  Right-anchored crop (never left). Preserve stand shade+chain / pencil floor.
-  CTA keep-all + nowrap (hyphen segments only on extreme narrow).
+  Mobile/tablet (≤1024) — recruit/donate only.
+  Graphics are clipped inside bands BELOW body copy (flex column).
+  Never full-viewport absolute that climbs over text.
 */
 @media (max-width: 1024px) {
   .crop-locked-graphic {
@@ -294,36 +294,37 @@ body {
   }
 
   /*
-    Stand: glued to the right.
-    right < 0 → only the right edge leaves the viewport.
-    bottom < 0 → only the pillar foot leaves (shade + chain stay in).
-    width ≤ ~92vw so the graphic’s left edge stays on-screen (no left crop).
-    Chain sits ~67% across the artboard → keep right crop under ~25%.
+    Stand: inside post-body band only.
+    top:0 → shade starts at band top (below copy).
+    height slightly over band → pillar foot crops; right < 0 → right crop.
   */
   .recruit-stand-graphic {
+    top: 0;
+    right: clamp(-8vw, -5vw, -2vw);
+    bottom: auto;
     left: auto;
-    right: clamp(-9vw, -6vw, -3vw);
-    bottom: clamp(-12vh, -10%, -6vh);
-    width: clamp(300px, 92vw, 520px);
-    max-width: none;
-    height: auto;
+    height: calc(100% + 8vh);
+    width: auto;
+    aspect-ratio: 1080 / 1920;
+    max-width: min(78vw, 400px);
     transform: none;
     pointer-events: none;
   }
 
   /*
-    Pencil: right-anchored, bottom flush (floor never cropped).
-    Slight negative margin-right = right-only overflow.
+    Pencil: inside fixed-height frame below body.
+    height:100% of frame, right-anchored → tips up, floor in frame, right crop.
   */
   .donate-pencil-graphic {
-    left: auto;
-    right: 0;
+    top: 0;
+    right: clamp(-8vw, -5vw, -2vw);
     bottom: auto;
-    top: auto;
-    width: clamp(280px, 90vw, 480px);
+    left: auto;
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1059.16 / 1856.12;
     max-width: none;
-    height: auto;
-    margin-right: clamp(-9vw, -6vw, -3vw);
+    margin: 0;
     transform: none;
     pointer-events: none;
   }
@@ -344,7 +345,6 @@ body {
     word-break: keep-all;
   }
 
-  /* Extreme narrow: break only between hyphen groups */
   @media (max-width: 340px) {
     .recruit-cta-mobile .cta-phone,
     .donate-account-mobile .cta-account {

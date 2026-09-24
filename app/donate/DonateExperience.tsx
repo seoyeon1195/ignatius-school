@@ -26,10 +26,11 @@ export function DonateExperience() {
       <SiteHeader />
 
       {/*
-        ≤1024: body → oversized pencil (right crop) → account below
+        ≤1024 Flex column (시안 3):
+        1) body  2) pencil frame (below body, right crop)  3) account below graphic
       */}
       <div className="relative z-10 flex min-h-[100svh] flex-col overflow-x-hidden px-[17px] pb-8 pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden">
-        <section className="relative z-10 w-full max-w-[340px] shrink-0 tab:max-w-[min(52vw,520px)]">
+        <section className="relative z-20 w-full max-w-[340px] shrink-0 tab:max-w-[min(52vw,520px)]">
           <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-none text-transparent tab:text-[clamp(30px,3.9vw,40px)]">
             후원 안내
           </h1>
@@ -54,18 +55,16 @@ export function DonateExperience() {
           </div>
         </section>
 
+        {/* Fixed-height clip frame — pencil cannot climb into body */}
         <div
           aria-hidden="true"
-          className="relative z-0 mt-[clamp(20px,4vh,40px)] w-full shrink-0 overflow-x-hidden"
+          className="relative z-0 mt-6 h-[min(46svh,420px)] w-full shrink-0 overflow-hidden tab:mt-8 tab:h-[min(48svh,480px)]"
         >
-          {/*
-            right-anchored pencil: right crop only, bottom of holder fully visible.
-          */}
-          <div className="donate-pencil-graphic fluid-gradient-motion relative ml-auto aspect-[1059.16/1856.12] bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:left_bottom] [mask-repeat:no-repeat] [mask-size:100%_100%]" />
+          <div className="donate-pencil-graphic fluid-gradient-motion absolute bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]" />
         </div>
 
         <div
-          className={`donate-account-mobile relative z-20 mt-[clamp(28px,5vh,48px)] min-h-fit shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-[1.3] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:text-[clamp(30px,3.9vw,40px)] ${
+          className={`donate-account-mobile relative z-20 mt-8 min-h-fit shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-[1.3] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:mt-10 tab:text-[clamp(30px,3.9vw,40px)] ${
             isAccountVisible ? "opacity-100" : "opacity-0"
           }`}
         >
