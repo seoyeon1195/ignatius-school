@@ -280,8 +280,9 @@ body {
 
 /*
   Mobile/tablet graphics (≤1024):
-  Responsive clip-frames + oversized SVG (overflow:hidden), not fixed px push-off.
-  Book (activity) crop-lock unchanged. PC stand/donate use Tailwind only (≥1025).
+  Oversized SVG (130%+ / 135vw) cropped by overflow-x-hidden parents.
+  mask-position:right bottom ≈ preserveAspectRatio xRightYBottom slice.
+  Sizing comes from component classes — do not override width/right here.
 */
 @media (max-width: 1024px) {
   .crop-locked-graphic {
@@ -290,51 +291,12 @@ body {
   }
 
   .crop-locked-graphic--book {
-    --graphic-w: 393px;
-    width: max(100vw, var(--graphic-w));
     max-width: none;
-    left: 50%;
-    margin-left: calc(max(100vw, var(--graphic-w)) / -2);
-    right: auto;
   }
 
-  /*
-    Recruit — stand clip frame (bottom-right).
-    Frame: clamp/vw/svh. Graphic: 128% of frame + % inset → R/B crop.
-    Left gutter keeps CTA (clamp 38vw) clear of the frame.
-  */
-  .recruit-stand-frame {
-    width: clamp(190px, 52vw, 540px);
-    height: clamp(360px, 68svh, 760px);
-    pointer-events: none;
-  }
-
-  .recruit-stand-graphic {
-    width: 128%;
-    height: auto;
-    max-width: none;
-    right: -10%;
-    bottom: -8%;
-    pointer-events: none;
-  }
-
-  /*
-    Donate — pencil clip frame (in-flow, right-aligned).
-    Frame grows with vw; graphic 126% of frame + right %-crop.
-  */
-  .donate-pencil-frame {
-    width: clamp(220px, 72vw, 480px);
-    aspect-ratio: 0.68;
-    max-height: min(58svh, 640px);
-    pointer-events: none;
-  }
-
+  .recruit-stand-graphic,
   .donate-pencil-graphic {
-    width: 126%;
-    height: auto;
     max-width: none;
-    right: -12%;
-    top: 0;
     pointer-events: none;
   }
 }

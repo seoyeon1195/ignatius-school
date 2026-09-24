@@ -46,40 +46,41 @@ export function RecruitExperience() {
   }
 
   return (
-    <main className="relative min-h-[100svh] overflow-hidden bg-black text-white [font-family:var(--font-gowun-batang)]">
+    <main className="relative min-h-[100svh] overflow-x-hidden bg-black text-white [font-family:var(--font-gowun-batang)] pc:overflow-hidden">
       <SiteHeader onRecruitClick={restartSequence} />
 
       {/*
-        ≤1024: responsive clip-frame composition (not fixed px push-off)
-        — Frame size tracks vw; graphic is larger inside overflow:hidden
-        — CTA stays bottom-left outside the stand frame
+        ≤1024: bold right/bottom crop via oversized graphic + overflow-x-hidden
+        CTA in flex mt-auto (not clipped by absolute bottom)
       */}
       <div
         aria-live="polite"
-        className="relative min-h-[100svh] overflow-hidden pc:hidden"
+        className="relative flex min-h-[100svh] flex-col overflow-x-hidden pc:hidden"
       >
         <div
           aria-hidden="true"
-          className="recruit-stand-frame absolute bottom-0 right-0 z-0 overflow-hidden"
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
         >
-          <div className="recruit-stand-graphic fluid-gradient-motion absolute bottom-0 right-0 aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%]" />
+          <div className="recruit-stand-graphic fluid-gradient-motion absolute bottom-0 right-0 aspect-[1080/1920] w-[135vw] max-w-none origin-bottom-right translate-x-[12%] translate-y-[10%] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:right_bottom] [mask-repeat:no-repeat] [mask-size:cover]" />
         </div>
 
-        <div className="absolute left-[17px] top-[136px] z-10 w-[min(calc(100%-34px),340px)] tab:left-[clamp(24px,3.5vw,40px)] tab:top-[clamp(120px,15vh,168px)] tab:w-[min(calc(100%-clamp(48px,7vw,80px)),min(52vw,520px))]">
-          <RecruitBody
-            mode={mode}
-            isFirstParagraphVisible={isFirstParagraphVisible}
-            isSecondParagraphVisible={isSecondParagraphVisible}
-            variant="mobile"
-          />
-        </div>
+        <div className="relative z-20 flex min-h-[100svh] flex-col px-[17px] pb-[max(16px,env(safe-area-inset-bottom))] pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)]">
+          <div className="w-full max-w-[340px] shrink-0 tab:max-w-[min(52vw,520px)]">
+            <RecruitBody
+              mode={mode}
+              isFirstParagraphVisible={isFirstParagraphVisible}
+              isSecondParagraphVisible={isSecondParagraphVisible}
+              variant="mobile"
+            />
+          </div>
 
-        <div
-          className={`absolute bottom-[14px] left-[17px] z-10 w-[clamp(140px,38vw,200px)] bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-left text-[30px] leading-[1.15] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:bottom-[clamp(14px,2.2vh,24px)] tab:left-[clamp(24px,3.5vw,40px)] tab:text-[clamp(30px,3.9vw,40px)] ${
-            isBottomVisible ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <RecruitCta mode={mode} />
+          <div
+            className={`z-20 mt-auto min-h-fit w-[clamp(160px,44vw,240px)] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-6 text-left text-[30px] leading-[1.2] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:text-[clamp(30px,3.9vw,40px)] ${
+              isBottomVisible ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <RecruitCta mode={mode} />
+          </div>
         </div>
       </div>
 
