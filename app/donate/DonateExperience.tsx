@@ -22,21 +22,64 @@ export function DonateExperience() {
   }, []);
 
   return (
-    <main className="relative min-h-[100svh] overflow-hidden bg-black text-white [font-family:var(--font-gowun-batang)]">
+    <main className="relative min-h-[100svh] overflow-x-hidden bg-black text-white [font-family:var(--font-gowun-batang)] pc:overflow-hidden">
       <SiteHeader />
 
+      {/* ≤1024: Flex column only — body → graphic → account (no absolute) */}
+      <div className="relative z-10 flex min-h-[100svh] flex-col px-[17px] pb-6 pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden">
+        <section className="relative z-10 w-full max-w-[340px] shrink-0 tab:max-w-[min(52vw,520px)]">
+          <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-none text-transparent tab:text-[clamp(30px,3.9vw,40px)]">
+            후원 안내
+          </h1>
+
+          <div
+            className={`mt-[18px] break-keep text-[16px] leading-[1.6] tracking-[-0.02em] transition-opacity duration-[2700ms] ease-in-out tab:mt-[clamp(18px,2.2vh,24px)] tab:text-[clamp(16px,2.05vw,20px)] ${
+              isBodyVisible ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <p>
+              재정 지원: 금액 제한 없음
+              <br />
+              물품 지원: 학용품, 교재 등
+              <br />
+              문의 : 02-717-8248
+            </p>
+            <p className="mt-0">
+              우리 학교는 자금 사용 내역을
+              <br />
+              투명하게 공개합니다.
+            </p>
+          </div>
+        </section>
+
+        <div
+          aria-hidden="true"
+          className="crop-locked-graphic crop-locked-graphic--donate fluid-gradient-motion relative z-0 mt-8 aspect-[1059.16/1856.12] w-[min(65vw,280px)] shrink-0 self-end bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] tab:mt-10 tab:w-[min(48vw,400px)]"
+        />
+
+        <div
+          className={`relative z-10 mt-8 shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-[1.3] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:mt-10 tab:text-[clamp(30px,3.9vw,40px)] ${
+            isAccountVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <p>우리 / 성이냐시오학교</p>
+          <p>1005-801-898245</p>
+        </div>
+      </div>
+
+      {/* ≥1025: existing PC absolute layout */}
       <div
         aria-hidden="true"
-        className="crop-locked-graphic crop-locked-graphic--donate fluid-gradient-motion absolute aspect-[1059.16/1856.12] bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] pc:right-[10%] pc:top-[16.3%] pc:w-[min(40vw,780px)]"
+        className="crop-locked-graphic crop-locked-graphic--donate fluid-gradient-motion absolute aspect-[1059.16/1856.12] bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] hidden pc:block pc:right-[10%] pc:top-[16.3%] pc:w-[min(40vw,780px)]"
       />
 
-      <section className="absolute left-[17px] top-[136px] z-10 w-[min(calc(100%-34px),340px)] pc:left-[1.9vw] pc:right-auto pc:top-[17.5%] pc:w-[min(34vw,520px)]">
-        <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-none text-transparent pc:text-[clamp(34px,3.5vw,88px)]">
+      <section className="absolute left-[1.9vw] top-[17.5%] z-10 hidden w-[min(34vw,520px)] pc:block">
+        <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(34px,3.5vw,88px)] leading-none text-transparent">
           후원 안내
         </h1>
 
         <div
-          className={`mt-[18px] break-keep text-[16px] leading-[1.6] tracking-[-0.02em] transition-opacity duration-[2700ms] ease-in-out pc:text-[clamp(20px,1.95vw,48px)] pc:leading-[1.65] ${
+          className={`mt-[18px] break-keep text-[clamp(20px,1.95vw,48px)] leading-[1.65] tracking-[-0.02em] transition-opacity duration-[2700ms] ease-in-out ${
             isBodyVisible ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -47,7 +90,7 @@ export function DonateExperience() {
             <br />
             문의 : 02-717-8248
           </p>
-          <p className="mt-0 pc:mt-[20px]">
+          <p className="mt-[20px]">
             우리 학교는 자금 사용 내역을
             <br />
             투명하게 공개합니다.
@@ -56,19 +99,13 @@ export function DonateExperience() {
       </section>
 
       <div
-        className={`absolute bottom-[14px] left-[17px] z-10 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-[1.3] text-transparent transition-opacity duration-[2700ms] ease-in-out pc:bottom-[2.5%] pc:left-[1.9vw] pc:max-w-[min(34vw,520px)] pc:translate-x-0 pc:text-left pc:text-[clamp(37px,3.61vw,90px)] pc:leading-[1.15] ${
+        className={`absolute bottom-[2.5%] left-[1.9vw] z-10 hidden max-w-[min(34vw,520px)] bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-left text-[clamp(37px,3.61vw,90px)] leading-[1.15] text-transparent transition-opacity duration-[2700ms] ease-in-out pc:block ${
           isAccountVisible ? "opacity-100" : "opacity-0"
         }`}
       >
-        <div className="pc:hidden">
-          <p>우리 / 성이냐시오학교</p>
-          <p>1005-801-898245</p>
-        </div>
-        <div className="hidden pc:block">
-          <p>우리은행</p>
-          <p>성이냐시오학교</p>
-          <p>1005-801-898245</p>
-        </div>
+        <p>우리은행</p>
+        <p>성이냐시오학교</p>
+        <p>1005-801-898245</p>
       </div>
 
       <SocialIcons />

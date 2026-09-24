@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-svh flex-col bg-black text-[#020202] [font-family:var(--font-gowun-batang)] [--light-w:clamp(248px,calc(248px+(100vw-360px)*0.08),280px)] [--beam-inset:42px] [--page-gutter:16px] [--title-buffer:16px] [--page-edge:37px] pc:[--light-w:min(31.25vw,600px)] pc:[--beam-inset:90px]">
+    <main className="relative flex min-h-svh flex-col bg-black text-[#020202] [font-family:var(--font-gowun-batang)] [--light-w:clamp(248px,calc(248px+(100vw-360px)*0.08),280px)] [--beam-inset:42px] [--page-gutter:16px] [--title-buffer:16px] [--page-edge:37px] tab:[--light-w:clamp(280px,36vw,420px)] pc:[--light-w:min(31.25vw,600px)] pc:[--beam-inset:90px]">
       <header className="absolute inset-x-0 top-0 z-20">
         <Link
           href="/"
@@ -30,7 +30,7 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* PC (>=1280px): 헤더·슬로건·푸터 공통 --page-edge(37px) */}
+      {/* PC (>=1025px): 헤더·슬로건·푸터 공통 --page-edge(37px) */}
       <section className="absolute inset-x-0 top-[19%] z-10 hidden items-center justify-between break-keep bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text px-[var(--page-edge)] text-[clamp(51px,3.4vw,92px)] leading-none tracking-[-0.04em] text-transparent pc:flex">
         <h1 className="break-keep whitespace-nowrap">만학의 꿈이 이뤄지는 곳,</h1>
         <p className="break-keep whitespace-nowrap">성 이냐시오 학교입니다.</p>
@@ -43,15 +43,15 @@ export default function Home() {
         />
 
         <div className="fluid-light-back relative z-[1] -mt-[calc(var(--light-w)*760.93/891.34*0.18)] flex w-full flex-1 flex-col">
-          <section className="relative z-10 break-keep px-4 pt-[calc(var(--flare-depth)+var(--title-buffer))] pc:hidden">
-            <h1 className="text-[clamp(28px,7.6vw,30px)] leading-[1.55] tracking-[-0.04em]">
+          <section className="relative z-10 break-keep px-4 pt-[calc(var(--flare-depth)+var(--title-buffer))] tab:max-w-[min(72vw,640px)] tab:px-[clamp(24px,3.5vw,40px)] pc:hidden">
+            <h1 className="text-[clamp(28px,7.6vw,30px)] leading-[1.55] tracking-[-0.04em] tab:text-[clamp(30px,3.8vw,42px)]">
               만학의 꿈이 이뤄지는 곳,
               <br />
               성 이냐시오 학교입니다.
             </h1>
           </section>
 
-          <section className="relative z-10 mt-[13px] break-keep px-4 text-[clamp(15px,4.1vw,16px)] leading-[1.55] tracking-[-0.025em] pc:mx-auto pc:mt-[clamp(64px,10vh,140px)] pc:max-w-[min(52vw,920px)] pc:px-0 pc:text-center pc:text-[clamp(21px,1.7vw,40px)]">
+          <section className="relative z-10 mt-[13px] break-keep px-4 text-[clamp(15px,4.1vw,16px)] leading-[1.55] tracking-[-0.025em] tab:mt-[clamp(13px,2vh,20px)] tab:max-w-[min(72vw,640px)] tab:px-[clamp(24px,3.5vw,40px)] tab:text-[clamp(16px,2.1vw,20px)] pc:mx-auto pc:mt-[clamp(64px,10vh,140px)] pc:max-w-[min(52vw,920px)] pc:px-0 pc:text-center pc:text-[clamp(21px,1.7vw,40px)]">
             <p>
               성 이냐시오 학교는 1977년부터
               <br className="pc:hidden" />
@@ -109,7 +109,7 @@ export default function Home() {
               />
             </div>
 
-            <div className="flex w-full items-end justify-between px-4 pc:hidden">
+            <div className="flex w-full items-end justify-between px-4 tab:px-[clamp(24px,3.5vw,40px)] pc:hidden">
               <address className="not-italic text-[13px] font-normal leading-[1.45]">
                 <p>
                   <a href="tel:02-717-8248">02-717-8248</a>

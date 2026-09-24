@@ -46,21 +46,65 @@ export function RecruitExperience() {
   }
 
   return (
-    <main className="relative min-h-[100svh] overflow-hidden bg-black text-white [font-family:var(--font-gowun-batang)]">
-      <div
-        aria-hidden="true"
-        className="crop-locked-graphic crop-locked-graphic--stand fluid-gradient-motion absolute aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] pc:right-[6%] pc:top-[15.2%] pc:w-[min(42vw,820px)]"
-      />
-
+    <main className="relative min-h-[100svh] overflow-x-hidden bg-black text-white [font-family:var(--font-gowun-batang)] pc:overflow-hidden">
       <SiteHeader onRecruitClick={restartSequence} />
 
-      <section aria-live="polite" className="absolute inset-0 z-10">
-        <RecruitCopy
-          mode={mode}
-          isFirstParagraphVisible={isFirstParagraphVisible}
-          isSecondParagraphVisible={isSecondParagraphVisible}
-          isBottomVisible={isBottomVisible}
-        />
+      {/* ≤1024: Flex column — copy → stand (fully in-view) → CTA */}
+      <div
+        aria-live="polite"
+        className="relative z-10 flex min-h-[100svh] flex-col px-[17px] pb-6 pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden"
+      >
+        <div className="relative z-10 w-full max-w-[340px] shrink-0 tab:max-w-[min(52vw,520px)]">
+          <RecruitBody
+            mode={mode}
+            isFirstParagraphVisible={isFirstParagraphVisible}
+            isSecondParagraphVisible={isSecondParagraphVisible}
+            variant="mobile"
+          />
+        </div>
+
+        <div className="relative z-0 mt-6 flex min-h-0 flex-1 items-end justify-end">
+          <div
+            aria-hidden="true"
+            className="crop-locked-graphic crop-locked-graphic--stand fluid-gradient-motion relative aspect-[1080/1920] w-[65vw] max-w-[300px] shrink-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] tab:w-[min(55vw,420px)] tab:max-w-none"
+          />
+        </div>
+
+        <div
+          className={`relative z-10 mt-6 max-w-[min(58vw,240px)] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-left text-[30px] leading-[1.15] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:mt-8 tab:max-w-[min(48vw,280px)] tab:text-[clamp(30px,3.9vw,40px)] ${
+            isBottomVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <RecruitCta mode={mode} />
+        </div>
+      </div>
+
+      {/* ≥1025: existing PC absolute layout */}
+      <div
+        aria-hidden="true"
+        className="crop-locked-graphic crop-locked-graphic--stand fluid-gradient-motion absolute aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] hidden pc:block pc:right-[6%] pc:top-[15.2%] pc:w-[min(42vw,820px)]"
+      />
+
+      <section
+        aria-live="polite"
+        className="absolute inset-0 z-10 hidden pc:block"
+      >
+        <div className="absolute left-[1.9vw] top-[17.5%] z-10 w-[min(36vw,560px)]">
+          <RecruitBody
+            mode={mode}
+            isFirstParagraphVisible={isFirstParagraphVisible}
+            isSecondParagraphVisible={isSecondParagraphVisible}
+            variant="pc"
+          />
+        </div>
+
+        <div
+          className={`absolute bottom-[2.8%] left-[1.9vw] z-10 max-w-[min(36vw,560px)] bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-left text-[clamp(29px,3.65vw,92px)] leading-[1.15] text-transparent transition-opacity duration-[2700ms] ease-in-out ${
+            isBottomVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <RecruitCta mode={mode} />
+        </div>
       </section>
 
       <SocialIcons />
@@ -68,105 +112,120 @@ export function RecruitExperience() {
   );
 }
 
-function RecruitCopy({
+function RecruitBody({
   mode,
   isFirstParagraphVisible,
   isSecondParagraphVisible,
-  isBottomVisible,
+  variant,
 }: {
   mode: RecruitMode;
   isFirstParagraphVisible: boolean;
   isSecondParagraphVisible: boolean;
-  isBottomVisible: boolean;
+  variant: "mobile" | "pc";
 }) {
   const isStudent = mode === "student";
+  const isPc = variant === "pc";
 
   return (
     <>
-      <div className="absolute left-[17px] top-[136px] z-10 w-[min(calc(100%-34px),340px)] pc:left-[1.9vw] pc:right-auto pc:top-[17.5%] pc:w-[min(36vw,560px)]">
-        <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-none text-transparent pc:text-[clamp(29px,3.65vw,92px)]">
-          {isStudent ? "학생 모집" : "교사 모집"}
-        </h1>
+      <h1
+        className={`bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text leading-none text-transparent ${
+          isPc
+            ? "text-[clamp(29px,3.65vw,92px)]"
+            : "text-[30px] tab:text-[clamp(30px,3.9vw,40px)]"
+        }`}
+      >
+        {isStudent ? "학생 모집" : "교사 모집"}
+      </h1>
 
-        <div className="mt-[17px] break-keep text-[16px] leading-[1.6] tracking-[-0.02em] pc:mt-[12px] pc:text-[clamp(16px,1.6vw,36px)]">
-          <p
-            className={`transition-opacity duration-[2700ms] ease-in-out ${
-              isFirstParagraphVisible ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            이냐시오 학교는 연령, 성별, 학력에 대한
-            <br />
-            제한 없이,{" "}
-            {isStudent
-              ? "학생을 상시 모집합니다."
-              : "교사를 정기적으로 모집합니다."}
-            <br />
-            {isStudent ? (
+      <div
+        className={`break-keep tracking-[-0.02em] ${
+          isPc
+            ? "mt-[12px] text-[clamp(16px,1.6vw,36px)] leading-[1.6]"
+            : "mt-[17px] text-[16px] leading-[1.6] tab:mt-[clamp(17px,2.2vh,22px)] tab:text-[clamp(16px,2.05vw,20px)]"
+        }`}
+      >
+        <p
+          className={`transition-opacity duration-[2700ms] ease-in-out ${
+            isFirstParagraphVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          이냐시오 학교는 연령, 성별, 학력에 대한
+          <br />
+          제한 없이,{" "}
+          {isStudent
+            ? "학생을 상시 모집합니다."
+            : "교사를 정기적으로 모집합니다."}
+          <br />
+          {isStudent ? (
+            isPc ? (
               <>
                 중등반과 고등반 2개의 반이 있으며,
                 <br />
-                <span className="pc:hidden">
-                  7개의 과목에 대한 수업을 제공합니다.
-                </span>
-                <span className="hidden pc:inline">
-                  7개의 과목에 대한 수업을 무료로 제공합니다.
-                </span>
+                7개의 과목에 대한 수업을 무료로 제공합니다.
               </>
             ) : (
               <>
-                모집 인원과 절차 등의 정보는 모집 기간에
+                중등반과 고등반 2개의 반이 있으며,
                 <br />
-                공식 SNS를 통해 안내됩니다.
+                7개의 과목에 대한 수업을 제공합니다.
               </>
-            )}
-          </p>
+            )
+          ) : (
+            <>
+              모집 인원과 절차 등의 정보는 모집 기간에
+              <br />
+              공식 SNS를 통해 안내됩니다.
+            </>
+          )}
+        </p>
 
-          <p
-            className={`mt-[18px] transition-opacity duration-[2700ms] ease-in-out pc:mt-[16px] ${
-              isSecondParagraphVisible ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            {isStudent ? (
+        <p
+          className={`transition-opacity duration-[2700ms] ease-in-out ${
+            isPc ? "mt-[16px]" : "mt-[18px]"
+          } ${isSecondParagraphVisible ? "opacity-100" : "opacity-0"}`}
+        >
+          {isStudent ? (
+            isPc ? (
               <>
-                <span className="pc:hidden">
-                  개인 상담을 원하시는 경우,
-                  <br />
-                  02-717-8248로 전화 주시면 됩니다!
-                </span>
-                <span className="hidden pc:inline">
-                  더욱 구체적인 상담을 원하시는 경우,
-                  <br />
-                  02-717-8248로 전화 주시면 됩니다!
-                </span>
+                더욱 구체적인 상담을 원하시는 경우,
+                <br />
+                02-717-8248로 전화 주시면 됩니다!
               </>
             ) : (
               <>
-                궁금한 점이 있으신 경우,
+                개인 상담을 원하시는 경우,
                 <br />
-                인스타그램 공식 계정으로 디엠 부탁드립니다!
+                02-717-8248로 전화 주시면 됩니다!
               </>
-            )}
-          </p>
-        </div>
+            )
+          ) : (
+            <>
+              궁금한 점이 있으신 경우,
+              <br />
+              인스타그램 공식 계정으로 디엠 부탁드립니다!
+            </>
+          )}
+        </p>
       </div>
+    </>
+  );
+}
 
-      <div
-        className={`absolute bottom-[14px] left-[17px] z-10 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-[1.15] text-transparent transition-opacity duration-[2700ms] ease-in-out pc:bottom-[2.8%] pc:left-[1.9vw] pc:right-auto pc:max-w-[min(36vw,560px)] pc:text-left pc:text-[clamp(29px,3.65vw,92px)] ${
-          isBottomVisible ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        {isStudent ? (
-          <>
-            <p>개인 상담</p>
-            <p>02-717-8248</p>
-          </>
-        ) : (
-          <>
-            <p>Instagram</p>
-            <p>@ignatius__school</p>
-          </>
-        )}
-      </div>
+function RecruitCta({mode}: {mode: RecruitMode}) {
+  if (mode === "student") {
+    return (
+      <>
+        <p>개인 상담</p>
+        <p>02-717-8248</p>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <p>Instagram</p>
+      <p>@ignatius__school</p>
     </>
   );
 }

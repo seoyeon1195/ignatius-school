@@ -175,7 +175,7 @@ export function ActivitySlider({images}: ActivitySliderProps) {
         )}
 
         <div className="absolute left-[3.44vw] right-[3.44vw] top-[24.08%]">
-          <div className="overflow-hidden pr-6 [transform:translateZ(0)]">
+          <div className="activity-slider-viewport overflow-hidden rounded-[20px] pr-6 [transform:translateZ(0)]">
             {loopedImages.length > 0 ? (
               <div
                 className={`flex overflow-visible ${
@@ -235,7 +235,7 @@ function SliderImage({
 }) {
   return (
     <div
-      className="relative aspect-[1480/800] w-full overflow-hidden rounded-[20px]"
+      className="activity-slide-card relative aspect-[1480/800] w-full overflow-hidden rounded-[20px]"
       style={{
         borderRadius: 20,
         overflow: "hidden",
@@ -244,6 +244,8 @@ function SliderImage({
         WebkitBackfaceVisibility: "hidden",
         backfaceVisibility: "hidden",
         WebkitMaskImage: "-webkit-radial-gradient(white, black)",
+        WebkitClipPath: "inset(0 round 20px)",
+        clipPath: "inset(0 round 20px)",
         isolation: "isolate",
       }}
     >
@@ -252,7 +254,7 @@ function SliderImage({
         alt={image.caption || "활동 사진"}
         fill
         priority={priority}
-        sizes="(min-width: 1280px) min(63.75vw, 1224px), 100vw"
+        sizes="(min-width: 1025px) min(63.75vw, 1224px), 100vw"
         className="rounded-[20px] object-cover"
         style={{
           borderRadius: 20,

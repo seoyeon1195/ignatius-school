@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
-/* PC 레이아웃 단일 전환점: 1280px 이상 */
+/* 태블릿: 768px+ / PC: 1025px+ (모바일은 기본 ~767px) */
 @theme {
-  --breakpoint-pc: 1280px;
+  --breakpoint-tab: 768px;
+  --breakpoint-pc: 1025px;
 }
 
 html,
@@ -113,7 +114,7 @@ body {
   );
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1025px) {
   .fluid-light-back {
     /* PC SVG(약 24.9vw) 비율에 맞춰 와이드에서도 슬림한 기울기 유지 */
     --flare-depth: clamp(160px, 25vw, 520px);
@@ -121,10 +122,23 @@ body {
 }
 
 /*
-  Activity PC slider cards (≥1280px):
-  Keep Figma 20px radius stable during transform/transition (GPU layer + webkit mask).
+  Activity PC slider (≥1025px):
+  Stable 20px radius during track translate (clip-path + GPU layer).
 */
-@media (min-width: 1280px) {
+@media (min-width: 1025px) {
+  .activity-slider-viewport {
+    border-radius: 20px;
+    overflow: hidden;
+    isolation: isolate;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+    -webkit-clip-path: inset(0 round 20px);
+    clip-path: inset(0 round 20px);
+  }
+
   .activity-slide-card {
     border-radius: 20px;
     overflow: hidden;
@@ -135,6 +149,7 @@ body {
     backface-visibility: hidden;
     -webkit-mask-image: -webkit-radial-gradient(white, black);
     mask-image: radial-gradient(white, black);
+    -webkit-clip-path: inset(0 round 20px);
     clip-path: inset(0 round 20px);
   }
 
@@ -264,58 +279,17 @@ body {
 }
 
 /*
-  Crop-locked page graphics (mobile < 1280):
-  - Size stays near the Figma reference (no shrink-to-fit that reveals the full shape)
-  - When the viewport tightens, slide the graphic outward — never scale it down
-  - Text stays fixed; clearance is maintained by shifting the graphic off-screen
+  Crop-locked page graphics:
+  - Donate/Stand ≤1024: in-flow sizing only (no absolute crop slide-off)
+  - Book (activity) unchanged across ≤1024
 */
-@media (max-width: 1279px) {
+@media (max-width: 1024px) {
   .crop-locked-graphic {
     --ref-w: 393px;
     --ref-h: 852px;
-    --crop-shift-y: max(0px, (var(--ref-h) - 100svh) * 0.45);
+    --crop-shift-y: max(0px, (var(--ref-h) - 100svh) * 0.22);
     z-index: 0;
     pointer-events: none;
-  }
-
-  .crop-locked-graphic--donate {
-    /* Reference @393: w≈80vw (314px), keep large cropped fit */
-    --graphic-w: 314px;
-    --base-outset: 100px;
-    --text-safe: 310px;
-    --gap: 28px;
-    --visual-inset: 80px;
-    width: var(--graphic-w);
-    max-width: none;
-    right: calc(
-      -1 *
-        max(
-          var(--base-outset),
-          var(--text-safe) + var(--gap) - 100vw + var(--graphic-w) -
-            var(--visual-inset)
-        )
-    );
-    top: calc(28% + var(--crop-shift-y));
-  }
-
-  .crop-locked-graphic--stand {
-    /* Reference @393: w≈85vw (334px) */
-    --graphic-w: 334px;
-    --base-outset: 80px;
-    --text-safe: 340px;
-    --gap: 28px;
-    --visual-inset: 56px;
-    width: var(--graphic-w);
-    max-width: none;
-    right: calc(
-      -1 *
-        max(
-          var(--base-outset),
-          var(--text-safe) + var(--gap) - 100vw + var(--graphic-w) -
-            var(--visual-inset)
-        )
-    );
-    top: calc(44% + var(--crop-shift-y));
   }
 
   .crop-locked-graphic--book {
@@ -327,10 +301,35 @@ body {
     margin-left: calc(max(100vw, var(--graphic-w)) / -2);
     right: auto;
   }
+
+  /* In-flow donate: width from component; clear absolute offsets */
+  .crop-locked-graphic--donate {
+    right: auto;
+    top: auto;
+    left: auto;
+    bottom: auto;
+  }
+
+  /* In-flow stand: keep full form inside viewport (no right crop) */
+  .crop-locked-graphic--stand {
+    width: 65vw;
+    max-width: 300px;
+    right: auto;
+    top: auto;
+    left: auto;
+    bottom: auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .crop-locked-graphic--stand {
+    width: min(55vw, 420px);
+    max-width: none;
+  }
 }
 
 /* PC: keep decorative graphics under copy, never intercept clicks */
-@media (min-width: 1280px) {
+@media (min-width: 1025px) {
   .crop-locked-graphic {
     z-index: 0;
     pointer-events: none;
