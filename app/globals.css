@@ -1,0 +1,345 @@
+@import "tailwindcss";
+
+/* PC 레이아웃 단일 전환점: 1280px 이상 */
+@theme {
+  --breakpoint-pc: 1280px;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: #000;
+}
+
+.fluid-gradient-motion {
+  background-image:
+    radial-gradient(ellipse 75% 55% at 18% 28%, #5aa8ef 0%, #acd5f1 32%, transparent 58%),
+    radial-gradient(ellipse 70% 60% at 82% 72%, #bfe1bf 0%, #ddedd7 38%, transparent 55%),
+    radial-gradient(ellipse 55% 65% at 48% 42%, #5aa8ef 0%, #9dc9ff 28%, transparent 52%),
+    linear-gradient(
+      118deg,
+      #ddedd7 0%,
+      #5aa8ef 16%,
+      #bfe1bf 32%,
+      #acd5f1 48%,
+      #5aa8ef 64%,
+      #bfe1bf 80%,
+      #ddedd7 100%
+    ),
+    linear-gradient(
+      248deg,
+      #5aa8ef 0%,
+      #ddedd7 18%,
+      #bfe1bf 36%,
+      #acd5f1 54%,
+      #5aa8ef 72%,
+      #bfe1bf 88%,
+      #acd5f1 100%
+    ) !important;
+  background-size:
+    280% 260%,
+    300% 280%,
+    240% 300%,
+    340% 320%,
+    300% 300%;
+  background-blend-mode: soft-light, soft-light, overlay, normal, normal;
+  animation: fluid-gradient-motion 4.7s ease-in-out infinite alternate;
+  will-change: background-position, background-size;
+}
+
+/* 단일 연속 빛 배경 — 상단 폭은 light 기준, 경사각은 vw 비율로 유지 */
+.fluid-light-back {
+  --flare-depth: clamp(80px, 18.85vw, 220px);
+  /* 1층: 상단 #FFFFFF 영역 추가 확대 + soft fade / 2~5층: 고대비 그라데이션 */
+  background-image:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #ffffff 18%,
+      rgba(255, 255, 255, 0.92) 23%,
+      rgba(255, 255, 255, 0.7) 28%,
+      rgba(255, 255, 255, 0.42) 34%,
+      rgba(255, 255, 255, 0.2) 40%,
+      rgba(191, 225, 191, 0.1) 46%,
+      rgba(90, 168, 239, 0.06) 52%,
+      transparent 58%
+    ),
+    radial-gradient(ellipse 80% 50% at 30% 35%, #5aa8ef 0%, transparent 55%),
+    radial-gradient(ellipse 70% 55% at 75% 55%, #bfe1bf 0%, transparent 50%),
+    linear-gradient(
+      142deg,
+      #ddedd7 0%,
+      #5aa8ef 18%,
+      #bfe1bf 36%,
+      #acd5f1 54%,
+      #5aa8ef 72%,
+      #bfe1bf 88%,
+      #ddedd7 100%
+    ),
+    linear-gradient(
+      220deg,
+      #5aa8ef 0%,
+      #ddedd7 22%,
+      #bfe1bf 44%,
+      #acd5f1 66%,
+      #5aa8ef 84%,
+      #bfe1bf 100%
+    );
+  background-position:
+    center top,
+    15% 25%,
+    70% 60%,
+    10% 20%,
+    80% 40%;
+  background-size:
+    100% 100%,
+    260% 240%,
+    280% 260%,
+    300% 300%,
+    280% 280%;
+  animation: fluid-light-back 5.1s ease-in-out infinite alternate;
+  will-change: background-position;
+  /* 가로가 늘면 --flare-depth도 vw로 함께 깊어져 경사각이 눕지 않음 */
+  clip-path: polygon(
+    calc(50% - (var(--light-w) - var(--beam-inset)) / 2) 0,
+    calc(50% + (var(--light-w) - var(--beam-inset)) / 2) 0,
+    100% var(--flare-depth),
+    100% 100%,
+    0 100%,
+    0 var(--flare-depth)
+  );
+}
+
+@media (min-width: 1280px) {
+  .fluid-light-back {
+    /* PC SVG(약 24.9vw) 비율에 맞춰 와이드에서도 슬림한 기울기 유지 */
+    --flare-depth: clamp(160px, 25vw, 520px);
+  }
+}
+
+/*
+  Activity PC slider cards (≥1280px):
+  Keep Figma 20px radius stable during transform/transition (GPU layer + webkit mask).
+*/
+@media (min-width: 1280px) {
+  .activity-slide-card {
+    border-radius: 20px;
+    overflow: hidden;
+    isolation: isolate;
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+    clip-path: inset(0 round 20px);
+  }
+
+  .activity-slide-card img {
+    border-radius: 20px;
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+@keyframes fluid-gradient-motion {
+  0% {
+    background-position:
+      0% 8%,
+      100% 92%,
+      22% 18%,
+      5% 40%,
+      95% 5%;
+    background-size:
+      260% 240%,
+      320% 300%,
+      220% 280%,
+      360% 300%,
+      280% 340%;
+  }
+  25% {
+    background-position:
+      88% 35%,
+      8% 12%,
+      70% 88%,
+      48% 0%,
+      18% 100%;
+    background-size:
+      340% 310%,
+      250% 360%,
+      310% 230%,
+      290% 380%,
+      360% 260%;
+  }
+  50% {
+    background-position:
+      35% 100%,
+      72% 8%,
+      5% 55%,
+      100% 62%,
+      0% 48%;
+    background-size:
+      300% 360%,
+      360% 240%,
+      270% 320%,
+      380% 290%,
+      260% 360%;
+  }
+  75% {
+    background-position:
+      100% 12%,
+      28% 100%,
+      58% 2%,
+      12% 78%,
+      80% 40%;
+    background-size:
+      240% 300%,
+      340% 320%,
+      360% 260%,
+      270% 350%,
+      330% 300%;
+  }
+  100% {
+    background-position:
+      15% 70%,
+      85% 42%,
+      95% 50%,
+      55% 95%,
+      40% 8%;
+    background-size:
+      360% 270%,
+      270% 360%,
+      250% 340%,
+      340% 280%,
+      310% 330%;
+  }
+}
+
+@keyframes fluid-light-back {
+  0% {
+    background-position:
+      center top,
+      0% 18%,
+      100% 70%,
+      5% 10%,
+      90% 30%;
+  }
+  25% {
+    background-position:
+      center top,
+      75% 48%,
+      12% 8%,
+      55% 0%,
+      20% 100%;
+  }
+  50% {
+    background-position:
+      center top,
+      32% 90%,
+      68% 22%,
+      100% 50%,
+      0% 60%;
+  }
+  75% {
+    background-position:
+      center top,
+      95% 20%,
+      25% 95%,
+      15% 80%,
+      72% 15%;
+  }
+  100% {
+    background-position:
+      center top,
+      18% 62%,
+      82% 45%,
+      62% 100%,
+      38% 5%;
+  }
+}
+
+/*
+  Crop-locked page graphics (mobile < 1280):
+  - Size stays near the Figma reference (no shrink-to-fit that reveals the full shape)
+  - When the viewport tightens, slide the graphic outward — never scale it down
+  - Text stays fixed; clearance is maintained by shifting the graphic off-screen
+*/
+@media (max-width: 1279px) {
+  .crop-locked-graphic {
+    --ref-w: 393px;
+    --ref-h: 852px;
+    --crop-shift-y: max(0px, (var(--ref-h) - 100svh) * 0.45);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .crop-locked-graphic--donate {
+    /* Reference @393: w≈80vw (314px), keep large cropped fit */
+    --graphic-w: 314px;
+    --base-outset: 100px;
+    --text-safe: 310px;
+    --gap: 28px;
+    --visual-inset: 80px;
+    width: var(--graphic-w);
+    max-width: none;
+    right: calc(
+      -1 *
+        max(
+          var(--base-outset),
+          var(--text-safe) + var(--gap) - 100vw + var(--graphic-w) -
+            var(--visual-inset)
+        )
+    );
+    top: calc(28% + var(--crop-shift-y));
+  }
+
+  .crop-locked-graphic--stand {
+    /* Reference @393: w≈85vw (334px) */
+    --graphic-w: 334px;
+    --base-outset: 80px;
+    --text-safe: 340px;
+    --gap: 28px;
+    --visual-inset: 56px;
+    width: var(--graphic-w);
+    max-width: none;
+    right: calc(
+      -1 *
+        max(
+          var(--base-outset),
+          var(--text-safe) + var(--gap) - 100vw + var(--graphic-w) -
+            var(--visual-inset)
+        )
+    );
+    top: calc(44% + var(--crop-shift-y));
+  }
+
+  .crop-locked-graphic--book {
+    /* Keep large cropped fit; never shrink below reference width */
+    --graphic-w: 393px;
+    width: max(100vw, var(--graphic-w));
+    max-width: none;
+    left: 50%;
+    margin-left: calc(max(100vw, var(--graphic-w)) / -2);
+    right: auto;
+  }
+}
+
+/* PC: keep decorative graphics under copy, never intercept clicks */
+@media (min-width: 1280px) {
+  .crop-locked-graphic {
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fluid-gradient-motion,
+  .fluid-light-back {
+    animation: none;
+  }
+}
