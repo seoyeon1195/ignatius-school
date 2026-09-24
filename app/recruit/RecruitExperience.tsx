@@ -66,11 +66,11 @@ export function RecruitExperience() {
           />
         </div>
 
-        {/* Stand lives only in this band — cannot climb over body */}
+        {/* Stand: bottom-right only — shade below body, CTA z-20 left */}
         <div className="relative z-0 mt-6 flex min-h-0 flex-1 flex-col overflow-hidden">
           <div
             aria-hidden="true"
-            className="recruit-stand-graphic fluid-gradient-motion pointer-events-none absolute aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]"
+            className="recruit-stand-graphic fluid-gradient-motion pointer-events-none absolute bottom-0 right-[-8vw] aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_bottom] [mask-repeat:no-repeat] [mask-size:100%_100%]"
           />
 
           <div

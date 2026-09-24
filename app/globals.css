@@ -290,24 +290,27 @@ body {
   }
 
   .crop-locked-graphic--book {
+    --graphic-w: 393px;
+    width: max(100vw, var(--graphic-w));
     max-width: none;
+    left: 50%;
+    margin-left: calc(max(100vw, var(--graphic-w)) / -2);
+    right: auto;
   }
 
   /*
-    Stand: inside post-body band only.
-    top:0 → shade starts at band top (below copy).
-    height slightly over band → pillar foot crops; right < 0 → right crop.
+    Stand: bottom-right anchored (mobile recruit only).
+    Shade starts mid-screen below body; right/bottom crop only.
   */
   .recruit-stand-graphic {
-    top: 0;
-    right: clamp(-8vw, -5vw, -2vw);
-    bottom: auto;
-    left: auto;
-    height: calc(100% + 8vh);
-    width: auto;
+    top: auto !important;
+    bottom: 0 !important;
+    right: -8vw !important;
+    left: auto !important;
+    height: auto !important;
+    width: 85vw !important;
+    max-width: 480px !important;
     aspect-ratio: 1080 / 1920;
-    max-width: min(78vw, 400px);
-    transform: none;
     pointer-events: none;
   }
 

@@ -117,7 +117,7 @@ export function ActivitySlider({images}: ActivitySliderProps) {
 
   return (
     <main
-      className={`relative flex flex-col bg-black [font-family:var(--font-gowun-batang)] pc:block pc:min-h-[100svh] pc:overflow-hidden ${
+      className={`relative bg-black [font-family:var(--font-gowun-batang)] pc:min-h-[100svh] pc:overflow-hidden ${
         isMobileGalleryVisible
           ? "h-[100svh] overflow-hidden"
           : "h-[100svh] overflow-hidden"
@@ -129,25 +129,17 @@ export function ActivitySlider({images}: ActivitySliderProps) {
           isContentVisible ? "opacity-36" : "opacity-100"
         }`}
       />
+      <div
+        aria-hidden="true"
+        className={`crop-locked-graphic crop-locked-graphic--book fluid-gradient-motion pointer-events-none fixed top-[100px] z-0 aspect-[3/5] bg-[linear-gradient(120deg,#9bc8ff_0%,#dcebd5_42%,#acd5f1_68%,#9bc8ff_100%)] transition-all duration-1000 ease-in-out [mask-image:url('/graphics/book_mobile.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] pc:hidden ${
+          isContentVisible
+            ? "translate-y-[min(410px,48svh)] opacity-36"
+            : "translate-y-0 opacity-100"
+        }`}
+      />
 
       <SiteHeader onActivityClick={restartIntro} />
       <SiteFooter />
-
-      {/* Mobile stack: book → mb-8 gap → gallery (no Y overlap) */}
-      <div className="relative z-0 flex min-h-0 flex-1 flex-col overflow-x-hidden pt-[64px] pc:hidden">
-        <div
-          aria-hidden="true"
-          className={`relative z-0 mb-8 flex w-full shrink-0 justify-center overflow-x-hidden transition-opacity duration-1000 ease-in-out ${
-            isContentVisible ? "opacity-36" : "opacity-100"
-          }`}
-        >
-          <div className="crop-locked-graphic crop-locked-graphic--book fluid-gradient-motion pointer-events-none aspect-[3/5] max-h-[min(38svh,340px)] w-[max(100vw,393px)] max-w-none bg-[linear-gradient(120deg,#9bc8ff_0%,#dcebd5_42%,#acd5f1_68%,#9bc8ff_100%)] [mask-image:url('/graphics/book_mobile.svg')] [mask-position:center_top] [mask-repeat:no-repeat] [mask-size:cover]" />
-        </div>
-
-        {isMobileGalleryVisible && (
-          <MobileActivityGallery images={sliderImages} />
-        )}
-      </div>
 
       <section
         aria-label="활동 사진 슬라이더"
@@ -226,6 +218,10 @@ export function ActivitySlider({images}: ActivitySliderProps) {
           )}
         </div>
       </section>
+
+      {isMobileGalleryVisible && (
+        <MobileActivityGallery images={sliderImages} />
+      )}
     </main>
   );
 }
@@ -283,7 +279,7 @@ function MobileActivityGallery({images}: {images: ActivityImage[]}) {
   return (
     <section
       aria-label="모바일 활동 사진 목록"
-      className={`relative z-10 min-h-0 flex-1 overflow-y-auto overscroll-y-contain scroll-smooth px-[17px] pt-2 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden transition-opacity duration-700 ease-out ${
+      className={`relative z-20 h-[100svh] overflow-y-auto overscroll-y-contain scroll-smooth px-[17px] pt-[79px] [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden transition-opacity duration-700 ease-out pc:hidden ${
         hasEntered ? "opacity-100" : "opacity-0"
       }`}
       style={{scrollSnapType: "y mandatory"}}
