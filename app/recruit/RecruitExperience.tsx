@@ -46,15 +46,26 @@ export function RecruitExperience() {
   }
 
   return (
-    <main className="relative min-h-[100svh] overflow-x-hidden bg-black text-white [font-family:var(--font-gowun-batang)] pc:overflow-hidden">
+    <main className="relative min-h-[100svh] overflow-hidden bg-black text-white [font-family:var(--font-gowun-batang)]">
       <SiteHeader onRecruitClick={restartSequence} />
 
-      {/* ≤1024: Flex column — copy → stand (fully in-view) → CTA */}
+      {/*
+        ≤1024: responsive clip-frame composition (not fixed px push-off)
+        — Frame size tracks vw; graphic is larger inside overflow:hidden
+        — CTA stays bottom-left outside the stand frame
+      */}
       <div
         aria-live="polite"
-        className="relative z-10 flex min-h-[100svh] flex-col px-[17px] pb-6 pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden"
+        className="relative min-h-[100svh] overflow-hidden pc:hidden"
       >
-        <div className="relative z-10 w-full max-w-[340px] shrink-0 tab:max-w-[min(52vw,520px)]">
+        <div
+          aria-hidden="true"
+          className="recruit-stand-frame absolute bottom-0 right-0 z-0 overflow-hidden"
+        >
+          <div className="recruit-stand-graphic fluid-gradient-motion absolute bottom-0 right-0 aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%]" />
+        </div>
+
+        <div className="absolute left-[17px] top-[136px] z-10 w-[min(calc(100%-34px),340px)] tab:left-[clamp(24px,3.5vw,40px)] tab:top-[clamp(120px,15vh,168px)] tab:w-[min(calc(100%-clamp(48px,7vw,80px)),min(52vw,520px))]">
           <RecruitBody
             mode={mode}
             isFirstParagraphVisible={isFirstParagraphVisible}
@@ -63,15 +74,8 @@ export function RecruitExperience() {
           />
         </div>
 
-        <div className="relative z-0 mt-6 flex min-h-0 flex-1 items-end justify-end">
-          <div
-            aria-hidden="true"
-            className="crop-locked-graphic crop-locked-graphic--stand fluid-gradient-motion relative aspect-[1080/1920] w-[65vw] max-w-[300px] shrink-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] tab:w-[min(55vw,420px)] tab:max-w-none"
-          />
-        </div>
-
         <div
-          className={`relative z-10 mt-6 max-w-[min(58vw,240px)] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-left text-[30px] leading-[1.15] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:mt-8 tab:max-w-[min(48vw,280px)] tab:text-[clamp(30px,3.9vw,40px)] ${
+          className={`absolute bottom-[14px] left-[17px] z-10 w-[clamp(140px,38vw,200px)] bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-left text-[30px] leading-[1.15] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:bottom-[clamp(14px,2.2vh,24px)] tab:left-[clamp(24px,3.5vw,40px)] tab:text-[clamp(30px,3.9vw,40px)] ${
             isBottomVisible ? "opacity-100" : "opacity-0"
           }`}
         >

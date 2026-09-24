@@ -25,8 +25,11 @@ export function DonateExperience() {
     <main className="relative min-h-[100svh] overflow-x-hidden bg-black text-white [font-family:var(--font-gowun-batang)] pc:overflow-hidden">
       <SiteHeader />
 
-      {/* ≤1024: Flex column only — body → graphic → account (no absolute) */}
-      <div className="relative z-10 flex min-h-[100svh] flex-col px-[17px] pb-6 pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden">
+      {/*
+        ≤1024: body → clip-frame pencil → account below (donate-only flow)
+        Crop via frame overflow:hidden + oversized graphic, not fixed -mr px
+      */}
+      <div className="relative z-10 flex min-h-[100svh] flex-col px-[17px] pb-8 pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden">
         <section className="relative z-10 w-full max-w-[340px] shrink-0 tab:max-w-[min(52vw,520px)]">
           <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-none text-transparent tab:text-[clamp(30px,3.9vw,40px)]">
             후원 안내
@@ -54,11 +57,13 @@ export function DonateExperience() {
 
         <div
           aria-hidden="true"
-          className="crop-locked-graphic crop-locked-graphic--donate fluid-gradient-motion relative z-0 mt-8 aspect-[1059.16/1856.12] w-[min(65vw,280px)] shrink-0 self-end bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] tab:mt-10 tab:w-[min(48vw,400px)]"
-        />
+          className="donate-pencil-frame relative z-0 mt-[clamp(20px,4vh,40px)] ml-auto shrink-0 overflow-hidden"
+        >
+          <div className="donate-pencil-graphic fluid-gradient-motion absolute right-0 top-0 aspect-[1059.16/1856.12] bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%]" />
+        </div>
 
         <div
-          className={`relative z-10 mt-8 shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-[1.3] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:mt-10 tab:text-[clamp(30px,3.9vw,40px)] ${
+          className={`relative z-10 mt-[clamp(28px,5vh,48px)] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-[1.3] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:text-[clamp(30px,3.9vw,40px)] ${
             isAccountVisible ? "opacity-100" : "opacity-0"
           }`}
         >

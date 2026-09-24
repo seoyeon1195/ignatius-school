@@ -279,21 +279,17 @@ body {
 }
 
 /*
-  Crop-locked page graphics:
-  - Donate/Stand ≤1024: in-flow sizing only (no absolute crop slide-off)
-  - Book (activity) unchanged across ≤1024
+  Mobile/tablet graphics (≤1024):
+  Responsive clip-frames + oversized SVG (overflow:hidden), not fixed px push-off.
+  Book (activity) crop-lock unchanged. PC stand/donate use Tailwind only (≥1025).
 */
 @media (max-width: 1024px) {
   .crop-locked-graphic {
-    --ref-w: 393px;
-    --ref-h: 852px;
-    --crop-shift-y: max(0px, (var(--ref-h) - 100svh) * 0.22);
     z-index: 0;
     pointer-events: none;
   }
 
   .crop-locked-graphic--book {
-    /* Keep large cropped fit; never shrink below reference width */
     --graphic-w: 393px;
     width: max(100vw, var(--graphic-w));
     max-width: none;
@@ -302,33 +298,48 @@ body {
     right: auto;
   }
 
-  /* In-flow donate: width from component; clear absolute offsets */
-  .crop-locked-graphic--donate {
-    right: auto;
-    top: auto;
-    left: auto;
-    bottom: auto;
+  /*
+    Recruit — stand clip frame (bottom-right).
+    Frame: clamp/vw/svh. Graphic: 128% of frame + % inset → R/B crop.
+    Left gutter keeps CTA (clamp 38vw) clear of the frame.
+  */
+  .recruit-stand-frame {
+    width: clamp(190px, 52vw, 540px);
+    height: clamp(360px, 68svh, 760px);
+    pointer-events: none;
   }
 
-  /* In-flow stand: keep full form inside viewport (no right crop) */
-  .crop-locked-graphic--stand {
-    width: 65vw;
-    max-width: 300px;
-    right: auto;
-    top: auto;
-    left: auto;
-    bottom: auto;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .crop-locked-graphic--stand {
-    width: min(55vw, 420px);
+  .recruit-stand-graphic {
+    width: 128%;
+    height: auto;
     max-width: none;
+    right: -10%;
+    bottom: -8%;
+    pointer-events: none;
+  }
+
+  /*
+    Donate — pencil clip frame (in-flow, right-aligned).
+    Frame grows with vw; graphic 126% of frame + right %-crop.
+  */
+  .donate-pencil-frame {
+    width: clamp(220px, 72vw, 480px);
+    aspect-ratio: 0.68;
+    max-height: min(58svh, 640px);
+    pointer-events: none;
+  }
+
+  .donate-pencil-graphic {
+    width: 126%;
+    height: auto;
+    max-width: none;
+    right: -12%;
+    top: 0;
+    pointer-events: none;
   }
 }
 
-/* PC: keep decorative graphics under copy, never intercept clicks */
+/* PC: decorative graphics under copy, never intercept clicks */
 @media (min-width: 1025px) {
   .crop-locked-graphic {
     z-index: 0;
