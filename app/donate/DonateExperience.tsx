@@ -58,7 +58,7 @@ export function DonateExperience() {
         {/* Fixed-height clip frame — pencil cannot climb into body */}
         <div
           aria-hidden="true"
-          className="relative z-0 mt-8 h-[min(58svh,540px)] w-full shrink-0 overflow-hidden tab:mt-10 tab:h-[min(58svh,540px)]"
+          className="relative z-0 mt-8 h-[min(62svh,580px)] w-full shrink-0 overflow-hidden tab:mt-10 tab:h-[min(62svh,580px)]"
         >
           <div className="donate-pencil-graphic fluid-gradient-motion absolute bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]" />
         </div>

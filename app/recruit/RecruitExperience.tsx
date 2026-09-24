@@ -15,6 +15,12 @@ export function RecruitExperience() {
   const [sequence, setSequence] = useState(0);
 
   useEffect(() => {
+    // Student hold ≈ 0–8600 fade, teacher from 11300 with same hold, then loop.
+    const STUDENT_FADE = 8600;
+    const TEACHER_START = 11300;
+    const TEACHER_FADE = TEACHER_START + STUDENT_FADE; // 19900
+    const LOOP_RESTART = TEACHER_FADE + 2700; // 22600 — same gap as student→teacher
+
     const timers = [
       window.setTimeout(() => setIsFirstParagraphVisible(true), 100),
       window.setTimeout(() => {
@@ -25,26 +31,25 @@ export function RecruitExperience() {
         setIsFirstParagraphVisible(false);
         setIsSecondParagraphVisible(false);
         setIsBottomVisible(false);
-      }, 8600),
-      window.setTimeout(() => setMode("teacher"), 11300),
-      window.setTimeout(() => setIsFirstParagraphVisible(true), 11400),
+      }, STUDENT_FADE),
+      window.setTimeout(() => setMode("teacher"), TEACHER_START),
+      window.setTimeout(() => setIsFirstParagraphVisible(true), TEACHER_START + 100),
       window.setTimeout(() => {
         setIsSecondParagraphVisible(true);
         setIsBottomVisible(true);
-      }, 14200),
-      // Teacher holds as long as student, then fade and loop to student
+      }, TEACHER_START + 2900),
       window.setTimeout(() => {
         setIsFirstParagraphVisible(false);
         setIsSecondParagraphVisible(false);
         setIsBottomVisible(false);
-      }, 19900),
+      }, TEACHER_FADE),
       window.setTimeout(() => {
         setMode("student");
         setIsFirstParagraphVisible(false);
         setIsSecondParagraphVisible(false);
         setIsBottomVisible(false);
         setSequence((value) => value + 1);
-      }, 22600),
+      }, LOOP_RESTART),
     ];
 
     return () => timers.forEach((timer) => window.clearTimeout(timer));
@@ -83,11 +88,11 @@ export function RecruitExperience() {
         <div className="relative z-0 mt-6 flex min-h-0 flex-1 flex-col overflow-hidden">
           <div
             aria-hidden="true"
-            className="recruit-stand-graphic fluid-gradient-motion pointer-events-none absolute top-0 right-[-14vw] aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]"
+            className="recruit-stand-graphic fluid-gradient-motion pointer-events-none absolute top-0 right-[-18vw] aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]"
           />
 
           <div
-            className={`recruit-cta-mobile relative z-20 mt-auto min-h-fit w-full max-w-[340px] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-4 text-left text-[30px] leading-[1.2] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:max-w-[min(52vw,520px)] tab:text-[clamp(30px,3.9vw,40px)] ${
+            className={`recruit-cta-mobile relative z-20 mt-auto min-h-fit w-full max-w-[340px] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-4 text-left text-[30px] leading-[1.25] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:max-w-[min(52vw,520px)] tab:text-[clamp(30px,3.9vw,40px)] ${
               isBottomVisible ? "opacity-100" : "opacity-0"
             }`}
           >
@@ -250,13 +255,13 @@ function RecruitCta({
   if (variant === "mobile") {
     return (
       <>
-        <p>
+        <p className="block">
           <span className="cta-line">Instagram</span>
         </p>
-        <p>
+        <p className="block">
           <span className="cta-line">@ignatius__</span>
         </p>
-        <p>
+        <p className="block">
           <span className="cta-line">school</span>
         </p>
       </>
