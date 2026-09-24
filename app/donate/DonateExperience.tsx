@@ -58,13 +58,13 @@ export function DonateExperience() {
         {/* Fixed-height clip frame — pencil cannot climb into body */}
         <div
           aria-hidden="true"
-          className="relative z-0 mt-6 h-[min(46svh,420px)] w-full shrink-0 overflow-hidden tab:mt-8 tab:h-[min(48svh,480px)]"
+          className="relative z-0 mt-8 h-[min(58svh,540px)] w-full shrink-0 overflow-hidden tab:mt-10 tab:h-[min(58svh,540px)]"
         >
           <div className="donate-pencil-graphic fluid-gradient-motion absolute bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]" />
         </div>
 
         <div
-          className={`donate-account-mobile relative z-20 mt-8 min-h-fit shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-[1.3] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:mt-10 tab:text-[clamp(30px,3.9vw,40px)] ${
+          className={`donate-account-mobile relative z-20 mt-10 min-h-fit shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-[1.3] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:mt-10 tab:text-[clamp(30px,3.9vw,40px)] ${
             isAccountVisible ? "opacity-100" : "opacity-0"
           }`}
         >

@@ -32,6 +32,19 @@ export function RecruitExperience() {
         setIsSecondParagraphVisible(true);
         setIsBottomVisible(true);
       }, 14200),
+      // Teacher holds as long as student, then fade and loop to student
+      window.setTimeout(() => {
+        setIsFirstParagraphVisible(false);
+        setIsSecondParagraphVisible(false);
+        setIsBottomVisible(false);
+      }, 19900),
+      window.setTimeout(() => {
+        setMode("student");
+        setIsFirstParagraphVisible(false);
+        setIsSecondParagraphVisible(false);
+        setIsBottomVisible(false);
+        setSequence((value) => value + 1);
+      }, 22600),
     ];
 
     return () => timers.forEach((timer) => window.clearTimeout(timer));
@@ -70,15 +83,15 @@ export function RecruitExperience() {
         <div className="relative z-0 mt-6 flex min-h-0 flex-1 flex-col overflow-hidden">
           <div
             aria-hidden="true"
-            className="recruit-stand-graphic fluid-gradient-motion pointer-events-none absolute top-0 right-[-8vw] aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]"
+            className="recruit-stand-graphic fluid-gradient-motion pointer-events-none absolute top-0 right-[-14vw] aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]"
           />
 
           <div
-            className={`recruit-cta-mobile relative z-20 mt-auto min-h-fit max-w-[min(46vw,200px)] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-4 text-left text-[30px] leading-[1.2] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:max-w-[min(40vw,240px)] tab:text-[clamp(30px,3.9vw,40px)] ${
+            className={`recruit-cta-mobile relative z-20 mt-auto min-h-fit w-full max-w-[340px] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-4 text-left text-[30px] leading-[1.2] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:max-w-[min(52vw,520px)] tab:text-[clamp(30px,3.9vw,40px)] ${
               isBottomVisible ? "opacity-100" : "opacity-0"
             }`}
           >
-            <RecruitCta mode={mode} />
+            <RecruitCta mode={mode} variant="mobile" />
           </div>
         </div>
       </div>
@@ -107,7 +120,7 @@ export function RecruitExperience() {
             isBottomVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          <RecruitCta mode={mode} />
+          <RecruitCta mode={mode} variant="pc" />
         </div>
       </section>
 
@@ -210,7 +223,13 @@ function RecruitBody({
   );
 }
 
-function RecruitCta({mode}: {mode: RecruitMode}) {
+function RecruitCta({
+  mode,
+  variant = "pc",
+}: {
+  mode: RecruitMode;
+  variant?: "mobile" | "pc";
+}) {
   if (mode === "student") {
     return (
       <>
@@ -223,6 +242,22 @@ function RecruitCta({mode}: {mode: RecruitMode}) {
             <span className="cta-phone-seg">717-</span>
             <span className="cta-phone-seg">8248</span>
           </span>
+        </p>
+      </>
+    );
+  }
+
+  if (variant === "mobile") {
+    return (
+      <>
+        <p>
+          <span className="cta-line">Instagram</span>
+        </p>
+        <p>
+          <span className="cta-line">@ignatius__</span>
+        </p>
+        <p>
+          <span className="cta-line">school</span>
         </p>
       </>
     );
