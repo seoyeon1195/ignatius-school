@@ -299,12 +299,12 @@ body {
   }
 
   /*
-    Stand: bottom-right anchored (mobile recruit only).
-    Shade starts mid-screen below body; right/bottom crop only.
+    Stand: top of art (shade + cord) visible in band below body.
+    top:0 + overflow clips pillar base; right:-8vw crops right only.
   */
   .recruit-stand-graphic {
-    top: auto !important;
-    bottom: 0 !important;
+    top: 0 !important;
+    bottom: auto !important;
     right: -8vw !important;
     left: auto !important;
     height: auto !important;

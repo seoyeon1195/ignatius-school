@@ -70,7 +70,7 @@ export function RecruitExperience() {
         <div className="relative z-0 mt-6 flex min-h-0 flex-1 flex-col overflow-hidden">
           <div
             aria-hidden="true"
-            className="recruit-stand-graphic fluid-gradient-motion pointer-events-none absolute bottom-0 right-[-8vw] aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_bottom] [mask-repeat:no-repeat] [mask-size:100%_100%]"
+            className="recruit-stand-graphic fluid-gradient-motion pointer-events-none absolute top-0 right-[-8vw] aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]"
           />
 
           <div
@@ -184,13 +184,13 @@ function RecruitBody({
           )}
         </p>
 
-        <p
-          className={`transition-opacity duration-[2700ms] ease-in-out ${
-            isPc ? "mt-[16px]" : "mt-[18px]"
-          } ${isSecondParagraphVisible ? "opacity-100" : "opacity-0"}`}
-        >
-          {isStudent ? (
-            isPc ? (
+        {isPc ? (
+          <p
+            className={`mt-[16px] transition-opacity duration-[2700ms] ease-in-out ${
+              isSecondParagraphVisible ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            {isStudent ? (
               <>
                 더욱 구체적인 상담을 원하시는 경우,
                 <br />
@@ -198,19 +198,13 @@ function RecruitBody({
               </>
             ) : (
               <>
-                개인 상담을 원하시는 경우,
+                궁금한 점이 있으신 경우,
                 <br />
-                02-717-8248로 전화 주시면 됩니다!
+                인스타그램 공식 계정으로 디엠 부탁드립니다!
               </>
-            )
-          ) : (
-            <>
-              궁금한 점이 있으신 경우,
-              <br />
-              인스타그램 공식 계정으로 디엠 부탁드립니다!
-            </>
-          )}
-        </p>
+            )}
+          </p>
+        ) : null}
       </div>
     </>
   );
