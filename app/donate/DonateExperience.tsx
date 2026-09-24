@@ -56,18 +56,29 @@ export function DonateExperience() {
 
         <div
           aria-hidden="true"
-          className="relative z-0 mt-[clamp(20px,4vh,40px)] w-[calc(100%+17px)] max-w-none shrink-0 overflow-x-hidden tab:w-[calc(100%+clamp(24px,3.5vw,40px))]"
+          className="relative z-0 mt-[clamp(20px,4vh,40px)] w-full shrink-0 overflow-x-hidden"
         >
-          <div className="donate-pencil-graphic fluid-gradient-motion relative ml-auto aspect-[1059.16/1856.12] w-[135%] max-w-none origin-bottom-right translate-x-[10%] bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:right_bottom] [mask-repeat:no-repeat] [mask-size:cover]" />
+          {/*
+            right-anchored pencil: right crop only, bottom of holder fully visible.
+          */}
+          <div className="donate-pencil-graphic fluid-gradient-motion relative ml-auto aspect-[1059.16/1856.12] bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:left_bottom] [mask-repeat:no-repeat] [mask-size:100%_100%]" />
         </div>
 
         <div
-          className={`relative z-20 mt-[clamp(28px,5vh,48px)] min-h-fit shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-[1.3] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:text-[clamp(30px,3.9vw,40px)] ${
+          className={`donate-account-mobile relative z-20 mt-[clamp(28px,5vh,48px)] min-h-fit shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-[1.3] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:text-[clamp(30px,3.9vw,40px)] ${
             isAccountVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          <p>우리 / 성이냐시오학교</p>
-          <p>1005-801-898245</p>
+          <p>
+            <span className="cta-line">우리 / 성이냐시오학교</span>
+          </p>
+          <p>
+            <span className="cta-account">
+              <span className="cta-account-seg">1005-</span>
+              <span className="cta-account-seg">801-</span>
+              <span className="cta-account-seg">898245</span>
+            </span>
+          </p>
         </div>
       </div>
 

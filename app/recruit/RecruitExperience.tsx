@@ -61,7 +61,11 @@ export function RecruitExperience() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
         >
-          <div className="recruit-stand-graphic fluid-gradient-motion absolute bottom-0 right-0 aspect-[1080/1920] w-[135vw] max-w-none origin-bottom-right translate-x-[12%] translate-y-[10%] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:right_bottom] [mask-repeat:no-repeat] [mask-size:cover]" />
+          {/*
+            right-anchored: only right + pillar-bottom crop.
+            mask left-top keeps shade bottom + right chain inside the box.
+          */}
+          <div className="recruit-stand-graphic fluid-gradient-motion absolute aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]" />
         </div>
 
         <div className="relative z-20 flex min-h-[100svh] flex-col px-[17px] pb-[max(16px,env(safe-area-inset-bottom))] pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)]">
@@ -75,7 +79,7 @@ export function RecruitExperience() {
           </div>
 
           <div
-            className={`z-20 mt-auto min-h-fit w-[clamp(160px,44vw,240px)] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-6 text-left text-[30px] leading-[1.2] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:text-[clamp(30px,3.9vw,40px)] ${
+            className={`recruit-cta-mobile z-20 mt-auto min-h-fit max-w-full shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-6 text-left text-[30px] leading-[1.2] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:text-[clamp(30px,3.9vw,40px)] ${
               isBottomVisible ? "opacity-100" : "opacity-0"
             }`}
           >
@@ -221,16 +225,28 @@ function RecruitCta({mode}: {mode: RecruitMode}) {
   if (mode === "student") {
     return (
       <>
-        <p>개인 상담</p>
-        <p>02-717-8248</p>
+        <p>
+          <span className="cta-line">개인 상담</span>
+        </p>
+        <p>
+          <span className="cta-phone">
+            <span className="cta-phone-seg">02-</span>
+            <span className="cta-phone-seg">717-</span>
+            <span className="cta-phone-seg">8248</span>
+          </span>
+        </p>
       </>
     );
   }
 
   return (
     <>
-      <p>Instagram</p>
-      <p>@ignatius__school</p>
+      <p>
+        <span className="cta-line">Instagram</span>
+      </p>
+      <p>
+        <span className="cta-line">@ignatius__school</span>
+      </p>
     </>
   );
 }

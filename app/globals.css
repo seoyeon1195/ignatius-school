@@ -279,10 +279,9 @@ body {
 }
 
 /*
-  Mobile/tablet graphics (≤1024):
-  Oversized SVG (130%+ / 135vw) cropped by overflow-x-hidden parents.
-  mask-position:right bottom ≈ preserveAspectRatio xRightYBottom slice.
-  Sizing comes from component classes — do not override width/right here.
+  Mobile/tablet (≤1024) — recruit/donate only:
+  Right-anchored crop (never left). Preserve stand shade+chain / pencil floor.
+  CTA keep-all + nowrap (hyphen segments only on extreme narrow).
 */
 @media (max-width: 1024px) {
   .crop-locked-graphic {
@@ -294,10 +293,69 @@ body {
     max-width: none;
   }
 
-  .recruit-stand-graphic,
-  .donate-pencil-graphic {
+  /*
+    Stand: glued to the right.
+    right < 0 → only the right edge leaves the viewport.
+    bottom < 0 → only the pillar foot leaves (shade + chain stay in).
+    width ≤ ~92vw so the graphic’s left edge stays on-screen (no left crop).
+    Chain sits ~67% across the artboard → keep right crop under ~25%.
+  */
+  .recruit-stand-graphic {
+    left: auto;
+    right: clamp(-9vw, -6vw, -3vw);
+    bottom: clamp(-12vh, -10%, -6vh);
+    width: clamp(300px, 92vw, 520px);
     max-width: none;
+    height: auto;
+    transform: none;
     pointer-events: none;
+  }
+
+  /*
+    Pencil: right-anchored, bottom flush (floor never cropped).
+    Slight negative margin-right = right-only overflow.
+  */
+  .donate-pencil-graphic {
+    left: auto;
+    right: 0;
+    bottom: auto;
+    top: auto;
+    width: clamp(280px, 90vw, 480px);
+    max-width: none;
+    height: auto;
+    margin-right: clamp(-9vw, -6vw, -3vw);
+    transform: none;
+    pointer-events: none;
+  }
+
+  .recruit-cta-mobile,
+  .donate-account-mobile {
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
+
+  .recruit-cta-mobile .cta-line,
+  .recruit-cta-mobile .cta-phone,
+  .donate-account-mobile .cta-line,
+  .donate-account-mobile .cta-account {
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+    word-break: keep-all;
+  }
+
+  /* Extreme narrow: break only between hyphen groups */
+  @media (max-width: 340px) {
+    .recruit-cta-mobile .cta-phone,
+    .donate-account-mobile .cta-account {
+      white-space: normal;
+    }
+
+    .recruit-cta-mobile .cta-phone-seg,
+    .donate-account-mobile .cta-account-seg {
+      display: inline-block;
+      white-space: nowrap;
+    }
   }
 }
 
