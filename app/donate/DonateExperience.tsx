@@ -29,7 +29,7 @@ export function DonateExperience() {
         ≤1024 Flex column (시안 3):
         1) body  2) pencil frame (below body, right crop)  3) account below graphic
       */}
-      <div className="relative z-10 flex min-h-[100svh] flex-col overflow-x-hidden px-[17px] pb-8 pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden">
+      <div className="relative z-10 flex min-h-[100svh] flex-col px-[17px] pb-8 pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden">
         <section className="relative z-20 w-full max-w-[340px] shrink-0 tab:max-w-[min(52vw,520px)]">
           <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-none text-transparent tab:text-[clamp(30px,3.9vw,40px)]">
             후원 안내
@@ -45,7 +45,7 @@ export function DonateExperience() {
               <br />
               물품 지원: 학용품, 교재 등
               <br />
-              문의 : 02-717-8248
+              문의: 02-717-8248
             </p>
             <p className="mt-0">
               우리 학교는 자금 사용 내역을
@@ -58,7 +58,7 @@ export function DonateExperience() {
         {/* Fixed-height clip frame — pencil cannot climb into body */}
         <div
           aria-hidden="true"
-          className="relative z-0 mt-8 h-[min(62svh,580px)] w-full shrink-0 overflow-hidden tab:mt-10 tab:h-[min(62svh,580px)]"
+          className="relative z-0 mt-8 h-[min(62svh,580px)] w-[calc(100%+17px)] shrink-0 overflow-hidden tab:mt-10 tab:h-[min(62svh,580px)] tab:w-[calc(100%+clamp(24px,3.5vw,40px))]"
         >
           <div className="donate-pencil-graphic fluid-gradient-motion absolute bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]" />
         </div>
@@ -102,7 +102,7 @@ export function DonateExperience() {
             <br />
             물품 지원: 학용품, 교재 등
             <br />
-            문의 : 02-717-8248
+            문의: 02-717-8248
           </p>
           <p className="mt-[20px]">
             우리 학교는 자금 사용 내역을

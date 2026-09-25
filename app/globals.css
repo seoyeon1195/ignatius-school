@@ -305,7 +305,8 @@ body {
   .recruit-stand-graphic {
     top: 0 !important;
     bottom: auto !important;
-    right: -18vw !important;
+    /* Bleed frame already eats the page padding; +17px keeps the graphic in place. */
+    right: calc(-18vw + 17px) !important;
     left: auto !important;
     height: auto !important;
     width: 85vw !important;
@@ -320,8 +321,8 @@ body {
   */
   .donate-pencil-graphic {
     top: 0;
-    right: clamp(-8vw, -5vw, -2vw);
-    bottom: auto;
+    bottom: 0;
+    right: calc(clamp(-8vw, -5vw, -2vw) + 17px);
     left: auto;
     height: 100%;
     width: auto;
@@ -330,6 +331,16 @@ body {
     margin: 0;
     transform: none;
     pointer-events: none;
+  }
+
+  @media (min-width: 768px) {
+    .recruit-stand-graphic {
+      right: calc(-18vw + clamp(24px, 3.5vw, 40px)) !important;
+    }
+
+    .donate-pencil-graphic {
+      right: calc(clamp(-8vw, -5vw, -2vw) + clamp(24px, 3.5vw, 40px));
+    }
   }
 
   .recruit-cta-mobile,

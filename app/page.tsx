@@ -53,15 +53,15 @@ export default function Home() {
 
           <section className="relative z-10 mt-[13px] break-keep px-4 text-[clamp(15px,4.1vw,16px)] leading-[1.55] tracking-[-0.025em] tab:mt-[clamp(13px,2vh,20px)] tab:max-w-[min(72vw,640px)] tab:px-[clamp(24px,3.5vw,40px)] tab:text-[clamp(16px,2.1vw,20px)] pc:mx-auto pc:mt-[clamp(64px,10vh,140px)] pc:max-w-[min(52vw,920px)] pc:px-0 pc:text-center pc:text-[clamp(21px,1.7vw,40px)]">
             <p>
-              성 이냐시오 학교는 1977년부터
+              성 이냐시오 학교는 1977년부터{" "}
               <br className="pc:hidden" />
               이어져 온 야간학교입니다.
               <br />
-              마포구 서강대학교에서 중·고등
+              마포구 서강대학교에서 중·고등{" "}
               <br className="pc:hidden" />
               검정고시 수업을 제공합니다.
               <br />
-              서강대학교의 지원을 받아 운영되며,
+              서강대학교의 지원을 받아 운영되며,{" "}
               <br className="pc:hidden" />
               종교와 무관합니다.
             </p>

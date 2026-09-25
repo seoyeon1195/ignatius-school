@@ -73,7 +73,7 @@ export function RecruitExperience() {
       */}
       <div
         aria-live="polite"
-        className="relative flex min-h-[100svh] flex-col overflow-x-hidden px-[17px] pb-[max(16px,env(safe-area-inset-bottom))] pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden"
+        className="relative flex min-h-[100svh] flex-col px-[17px] pb-[max(16px,env(safe-area-inset-bottom))] pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden"
       >
         <div className="relative z-20 w-full max-w-[340px] shrink-0 tab:max-w-[min(52vw,520px)]">
           <RecruitBody
@@ -85,11 +85,13 @@ export function RecruitExperience() {
         </div>
 
         {/* Stand: bottom-right only — shade below body, CTA z-20 left */}
-        <div className="relative z-0 mt-6 flex min-h-0 flex-1 flex-col overflow-hidden">
+        <div className="relative z-0 mt-6 flex min-h-0 flex-1 flex-col">
           <div
             aria-hidden="true"
-            className="recruit-stand-graphic fluid-gradient-motion pointer-events-none absolute top-0 right-[-18vw] aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]"
-          />
+            className="pointer-events-none absolute inset-y-0 left-0 -right-[17px] -bottom-[max(16px,env(safe-area-inset-bottom))] overflow-hidden tab:-right-[clamp(24px,3.5vw,40px)]"
+          >
+            <div className="recruit-stand-graphic fluid-gradient-motion absolute top-0 aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]" />
+          </div>
 
           <div
             className={`recruit-cta-mobile relative z-20 mt-auto min-h-fit w-full max-w-[340px] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-4 text-left text-[30px] leading-[1.25] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:max-w-[min(52vw,520px)] tab:text-[clamp(30px,3.9vw,40px)] ${
