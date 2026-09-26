@@ -127,11 +127,16 @@ body {
 */
 @media (min-width: 1025px) {
   .activity-slider-viewport {
+    border-radius: 20px;
     overflow: hidden;
     isolation: isolate;
     transform: translateZ(0);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+    -webkit-clip-path: inset(0 round 20px);
+    clip-path: inset(0 round 20px);
   }
 
   .activity-slide-card {

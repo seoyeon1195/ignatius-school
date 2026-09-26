@@ -28,7 +28,7 @@ export function ActivitySlider({images}: ActivitySliderProps) {
   useEffect(() => {
     const contentTimer = window.setTimeout(() => {
       setIsContentVisible(true);
-    }, 600);
+    }, 2600);
     const galleryTimer = window.setTimeout(() => {
       setIsMobileGalleryVisible(true);
     }, 1200);
@@ -174,8 +174,8 @@ export function ActivitySlider({images}: ActivitySliderProps) {
           </div>
         )}
 
-        <div className="absolute left-[3.44vw] right-0 top-[22%]">
-          <div className="activity-slider-viewport overflow-hidden [transform:translateZ(0)]">
+        <div className="absolute left-[3.44vw] right-[3.44vw] top-[24.08%]">
+          <div className="activity-slider-viewport overflow-hidden rounded-[20px] pr-6 [transform:translateZ(0)]">
             {loopedImages.length > 0 ? (
               <div
                 className={`flex overflow-visible ${
@@ -185,13 +185,13 @@ export function ActivitySlider({images}: ActivitySliderProps) {
                 }`}
                 style={{
                   gap: "min(1.25vw, 24px)",
-                  transform: `translate3d(calc(-${trackIndex} * (min(76vw, 1400px) + min(1.25vw, 24px))), 0, 0)`,
+                  transform: `translate3d(calc(-${trackIndex} * (min(63.75vw, 1224px) + min(1.25vw, 24px))), 0, 0)`,
                 }}
               >
                 {loopedImages.map((image, index) => (
                   <div
                     key={`${image._key}-${index}`}
-                    className="w-[min(76vw,1400px)] shrink-0"
+                    className="w-[min(63.75vw,1224px)] shrink-0"
                   >
                     <SliderImage
                       image={image}
@@ -254,7 +254,7 @@ function SliderImage({
         alt={image.caption || "활동 사진"}
         fill
         priority={priority}
-        sizes="(min-width: 1025px) min(76vw, 1400px), 100vw"
+        sizes="(min-width: 1025px) min(63.75vw, 1224px), 100vw"
         className="rounded-[20px] object-cover"
         style={{
           borderRadius: 20,
