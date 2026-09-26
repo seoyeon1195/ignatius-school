@@ -15,18 +15,18 @@ export function RecruitExperience() {
   const [sequence, setSequence] = useState(0);
 
   useEffect(() => {
-    // Student hold ≈ 0–8600 fade, teacher from 11300 with same hold, then loop.
-    const STUDENT_FADE = 8600;
-    const TEACHER_START = 11300;
-    const TEACHER_FADE = TEACHER_START + STUDENT_FADE; // 19900
-    const LOOP_RESTART = TEACHER_FADE + 2700; // 22600 — same gap as student→teacher
+    // Student hold, then teacher for the same span, then loop.
+    const STUDENT_FADE = 5200;
+    const TEACHER_START = 6800;
+    const TEACHER_FADE = TEACHER_START + STUDENT_FADE;
+    const LOOP_RESTART = TEACHER_FADE + 1600;
 
     const timers = [
       window.setTimeout(() => setIsFirstParagraphVisible(true), 100),
       window.setTimeout(() => {
         setIsSecondParagraphVisible(true);
         setIsBottomVisible(true);
-      }, 2900),
+      }, 1700),
       window.setTimeout(() => {
         setIsFirstParagraphVisible(false);
         setIsSecondParagraphVisible(false);
@@ -37,7 +37,7 @@ export function RecruitExperience() {
       window.setTimeout(() => {
         setIsSecondParagraphVisible(true);
         setIsBottomVisible(true);
-      }, TEACHER_START + 2900),
+      }, TEACHER_START + 1700),
       window.setTimeout(() => {
         setIsFirstParagraphVisible(false);
         setIsSecondParagraphVisible(false);
@@ -94,7 +94,7 @@ export function RecruitExperience() {
           </div>
 
           <div
-            className={`recruit-cta-mobile relative z-20 mt-auto min-h-fit w-full max-w-[340px] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-4 text-left text-[30px] leading-[1.25] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:max-w-[min(52vw,520px)] tab:text-[clamp(30px,3.9vw,40px)] ${
+            className={`recruit-cta-mobile relative z-20 mt-auto min-h-fit w-full max-w-[340px] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-4 text-left text-[30px] leading-[1.25] text-transparent transition-opacity duration-[1600ms] ease-in-out tab:max-w-[min(52vw,520px)] tab:text-[clamp(30px,3.9vw,40px)] ${
               isBottomVisible ? "opacity-100" : "opacity-0"
             }`}
           >
@@ -123,7 +123,7 @@ export function RecruitExperience() {
         </div>
 
         <div
-          className={`absolute bottom-[2.8%] left-[1.9vw] z-10 max-w-[min(36vw,560px)] bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-left text-[clamp(29px,3.65vw,92px)] leading-[1.15] text-transparent transition-opacity duration-[2700ms] ease-in-out ${
+          className={`absolute bottom-[2.8%] left-[1.9vw] z-10 max-w-[min(36vw,560px)] bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-left text-[clamp(29px,3.65vw,92px)] leading-[1.15] text-transparent transition-opacity duration-[1600ms] ease-in-out ${
             isBottomVisible ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -155,8 +155,8 @@ function RecruitBody({
       <h1
         className={`bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text leading-none text-transparent ${
           isPc
-            ? "text-[clamp(29px,3.65vw,92px)]"
-            : "text-[30px] tab:text-[clamp(30px,3.9vw,40px)]"
+            ? "text-[clamp(29px,3vw,92px)]"
+            : "text-[clamp(29px,3vw,92px)]"
         }`}
       >
         {isStudent ? "학생 모집" : "교사 모집"}
@@ -170,7 +170,7 @@ function RecruitBody({
         }`}
       >
         <p
-          className={`transition-opacity duration-[2700ms] ease-in-out ${
+          className={`transition-opacity duration-[1600ms] ease-in-out ${
             isFirstParagraphVisible ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -206,7 +206,7 @@ function RecruitBody({
 
         {isPc ? (
           <p
-            className={`mt-[16px] transition-opacity duration-[2700ms] ease-in-out ${
+            className={`mt-[16px] transition-opacity duration-[1600ms] ease-in-out ${
               isSecondParagraphVisible ? "opacity-100" : "opacity-0"
             }`}
           >
@@ -302,7 +302,7 @@ function SiteHeader({onRecruitClick}: {onRecruitClick: () => void}) {
 
       <nav
         aria-label="주요 메뉴"
-        className="absolute right-[17px] top-[22px] flex items-center gap-[14px] text-[16px] leading-none pc:right-[1.8vw] pc:top-[calc(3.8vh+5px)] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,2vw,48px)]"
+        className="absolute right-[17px] top-[16px] flex items-center gap-[14px] text-[16px] leading-none pc:right-[1.8vw] pc:top-[3.2vh] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
       >
         <Link href="/activity">활동</Link>
         <button type="button" onClick={onRecruitClick}>

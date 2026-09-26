@@ -12,7 +12,7 @@ export function DonateExperience() {
     const bodyTimer = window.setTimeout(() => setIsBodyVisible(true), 100);
     const accountTimer = window.setTimeout(
       () => setIsAccountVisible(true),
-      2900,
+      1700,
     );
 
     return () => {
@@ -31,12 +31,12 @@ export function DonateExperience() {
       */}
       <div className="relative z-10 flex min-h-[100svh] flex-col px-[17px] pb-8 pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden">
         <section className="relative z-20 w-full max-w-[340px] shrink-0 tab:max-w-[min(52vw,520px)]">
-          <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-none text-transparent tab:text-[clamp(30px,3.9vw,40px)]">
+          <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(29px,3vw,92px)] leading-none text-transparent">
             후원 안내
           </h1>
 
           <div
-            className={`mt-[18px] break-keep text-[16px] leading-[1.6] tracking-[-0.02em] transition-opacity duration-[2700ms] ease-in-out tab:mt-[clamp(18px,2.2vh,24px)] tab:text-[clamp(16px,2.05vw,20px)] ${
+            className={`mt-[18px] break-keep text-[16px] leading-[1.6] tracking-[-0.02em] transition-opacity duration-[1600ms] ease-in-out tab:mt-[clamp(18px,2.2vh,24px)] tab:text-[clamp(16px,2.05vw,20px)] ${
               isBodyVisible ? "opacity-100" : "opacity-0"
             }`}
           >
@@ -64,7 +64,7 @@ export function DonateExperience() {
         </div>
 
         <div
-          className={`donate-account-mobile relative z-20 mt-10 min-h-fit shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-[1.3] text-transparent transition-opacity duration-[2700ms] ease-in-out tab:mt-10 tab:text-[clamp(30px,3.9vw,40px)] ${
+          className={`donate-account-mobile relative z-20 mt-10 min-h-fit shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-[1.3] text-transparent transition-opacity duration-[1600ms] ease-in-out tab:mt-10 tab:text-[clamp(30px,3.9vw,40px)] ${
             isAccountVisible ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -88,12 +88,12 @@ export function DonateExperience() {
       />
 
       <section className="absolute left-[1.9vw] top-[17.5%] z-10 hidden w-[min(34vw,520px)] pc:block">
-        <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(34px,3.5vw,88px)] leading-none text-transparent">
+        <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(29px,3vw,92px)] leading-none text-transparent">
           후원 안내
         </h1>
 
         <div
-          className={`mt-[18px] break-keep text-[clamp(20px,1.95vw,48px)] leading-[1.65] tracking-[-0.02em] transition-opacity duration-[2700ms] ease-in-out ${
+          className={`mt-[18px] break-keep text-[clamp(20px,1.95vw,48px)] leading-[1.65] tracking-[-0.02em] transition-opacity duration-[1600ms] ease-in-out ${
             isBodyVisible ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -113,7 +113,7 @@ export function DonateExperience() {
       </section>
 
       <div
-        className={`absolute bottom-[2.5%] left-[1.9vw] z-10 hidden max-w-[min(34vw,520px)] bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-left text-[clamp(37px,3.61vw,90px)] leading-[1.15] text-transparent transition-opacity duration-[2700ms] ease-in-out pc:block ${
+        className={`absolute bottom-[2.5%] left-[1.9vw] z-10 hidden max-w-[min(34vw,520px)] bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-left text-[clamp(37px,3.61vw,90px)] leading-[1.15] text-transparent transition-opacity duration-[1600ms] ease-in-out pc:block ${
           isAccountVisible ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -147,7 +147,7 @@ function SiteHeader() {
 
       <nav
         aria-label="주요 메뉴"
-        className="absolute right-[17px] top-[22px] flex items-center gap-[14px] text-[16px] leading-none pc:right-[1.8vw] pc:top-[calc(3.8vh+5px)] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,2vw,48px)]"
+        className="absolute right-[17px] top-[16px] flex items-center gap-[14px] text-[16px] leading-none pc:right-[1.8vw] pc:top-[3.2vh] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
       >
         <Link href="/activity">활동</Link>
         <Link href="/recruit">모집</Link>

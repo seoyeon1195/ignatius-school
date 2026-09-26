@@ -22,7 +22,7 @@ export default function Home() {
 
         <nav
           aria-label="주요 메뉴"
-          className="absolute right-[17px] top-[22px] flex items-center gap-[14px] text-[16px] leading-none text-white pc:right-[var(--page-edge)] pc:top-[calc(3.8vh+5px)] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,2vw,48px)]"
+          className="absolute right-[17px] top-[16px] flex items-center gap-[14px] text-[16px] leading-none text-white pc:right-[var(--page-edge)] pc:top-[3.2vh] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
         >
           <Link href="/activity">활동</Link>
           <Link href="/recruit">모집</Link>
@@ -31,7 +31,7 @@ export default function Home() {
       </header>
 
       {/* PC (>=1025px): 헤더·슬로건·푸터 공통 --page-edge(37px) */}
-      <section className="absolute inset-x-0 top-[19%] z-10 hidden items-center justify-between break-keep bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text px-[var(--page-edge)] text-[clamp(51px,3.4vw,92px)] leading-none tracking-[-0.04em] text-transparent pc:flex">
+      <section className="absolute inset-x-0 top-[19%] z-10 hidden items-center justify-between break-keep bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text px-[var(--page-edge)] text-[clamp(42px,3.4vw,92px)] leading-none tracking-[-0.04em] text-transparent pc:flex">
         <h1 className="break-keep whitespace-nowrap">만학의 꿈이 이뤄지는 곳,</h1>
         <p className="break-keep whitespace-nowrap">성 이냐시오 학교입니다.</p>
       </section>

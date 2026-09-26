@@ -28,10 +28,10 @@ export function ActivitySlider({images}: ActivitySliderProps) {
   useEffect(() => {
     const contentTimer = window.setTimeout(() => {
       setIsContentVisible(true);
-    }, 3000);
+    }, 600);
     const galleryTimer = window.setTimeout(() => {
       setIsMobileGalleryVisible(true);
-    }, 3000);
+    }, 1200);
 
     return () => {
       window.clearTimeout(contentTimer);
@@ -76,12 +76,12 @@ export function ActivitySlider({images}: ActivitySliderProps) {
 
     captionSwapTimer.current = window.setTimeout(() => {
       setCurrentIndex(nextIndex);
-    }, 250);
+    }, 160);
 
     captionRevealTimer.current = window.setTimeout(() => {
       setIsCaptionVisible(true);
       finishSlide(direction === "next" ? trackIndex + 1 : trackIndex - 1);
-    }, 500);
+    }, 320);
   }
 
   function finishSlide(activeTrackIndex: number) {
@@ -125,13 +125,13 @@ export function ActivitySlider({images}: ActivitySliderProps) {
     >
       <div
         aria-hidden="true"
-        className={`fluid-gradient-motion pointer-events-none absolute left-0 top-[33.5%] z-0 hidden aspect-[1920.26/1115.99] w-full bg-[linear-gradient(120deg,#9bc8ff_0%,#dcebd5_42%,#acd5f1_68%,#9bc8ff_100%)] transition-all duration-1000 ease-in-out [mask-image:url('/graphics/book_pc.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] pc:block ${
+        className={`fluid-gradient-motion pointer-events-none absolute left-0 top-[33.5%] z-0 hidden aspect-[1920.26/1115.99] w-full bg-[linear-gradient(120deg,#9bc8ff_0%,#dcebd5_42%,#acd5f1_68%,#9bc8ff_100%)] transition-all duration-[600ms] ease-in-out [mask-image:url('/graphics/book_pc.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] pc:block ${
           isContentVisible ? "opacity-36" : "opacity-100"
         }`}
       />
       <div
         aria-hidden="true"
-        className={`crop-locked-graphic crop-locked-graphic--book fluid-gradient-motion pointer-events-none fixed top-[100px] z-0 aspect-[3/5] bg-[linear-gradient(120deg,#9bc8ff_0%,#dcebd5_42%,#acd5f1_68%,#9bc8ff_100%)] transition-all duration-1000 ease-in-out [mask-image:url('/graphics/book_mobile.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] pc:hidden ${
+        className={`crop-locked-graphic crop-locked-graphic--book fluid-gradient-motion pointer-events-none fixed top-[100px] z-0 aspect-[3/5] bg-[linear-gradient(120deg,#9bc8ff_0%,#dcebd5_42%,#acd5f1_68%,#9bc8ff_100%)] transition-all duration-[600ms] ease-in-out [mask-image:url('/graphics/book_mobile.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] pc:hidden ${
           isContentVisible
             ? "translate-y-[min(410px,48svh)] opacity-36"
             : "translate-y-0 opacity-100"
@@ -139,19 +139,19 @@ export function ActivitySlider({images}: ActivitySliderProps) {
       />
 
       <SiteHeader onActivityClick={restartIntro} />
-      <SiteFooter />
+      {!isContentVisible && <SiteFooter />}
 
       <section
         aria-label="활동 사진 슬라이더"
         aria-hidden={!isContentVisible}
         inert={!isContentVisible}
-        className={`absolute inset-0 z-20 hidden transition-all duration-1000 ease-in-out pc:block ${
+        className={`absolute inset-0 z-20 hidden transition-all duration-[600ms] ease-in-out pc:block ${
           isContentVisible
             ? "translate-y-0 opacity-100"
             : "pointer-events-none translate-y-6 opacity-0"
         }`}
       >
-        <h1 className="absolute left-[3.44vw] top-[16.4%] z-10 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(38px,3.65vw,92px)] leading-none text-transparent">
+        <h1 className="absolute left-[3.44vw] top-[16.4%] z-10 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(29px,3vw,92px)] leading-none text-transparent">
           활동 사진
         </h1>
 
@@ -174,24 +174,24 @@ export function ActivitySlider({images}: ActivitySliderProps) {
           </div>
         )}
 
-        <div className="absolute left-[3.44vw] right-[3.44vw] top-[24.08%]">
-          <div className="activity-slider-viewport overflow-hidden rounded-[20px] pr-6 [transform:translateZ(0)]">
+        <div className="absolute left-[3.44vw] right-0 top-[22%]">
+          <div className="activity-slider-viewport overflow-hidden [transform:translateZ(0)]">
             {loopedImages.length > 0 ? (
               <div
                 className={`flex overflow-visible ${
                   isTrackAnimated
-                    ? "transition-transform duration-500 ease-in-out"
+                    ? "transition-transform duration-300 ease-in-out"
                     : ""
                 }`}
                 style={{
                   gap: "min(1.25vw, 24px)",
-                  transform: `translate3d(calc(-${trackIndex} * (min(63.75vw, 1224px) + min(1.25vw, 24px))), 0, 0)`,
+                  transform: `translate3d(calc(-${trackIndex} * (min(76vw, 1400px) + min(1.25vw, 24px))), 0, 0)`,
                 }}
               >
                 {loopedImages.map((image, index) => (
                   <div
                     key={`${image._key}-${index}`}
-                    className="w-[min(63.75vw,1224px)] shrink-0"
+                    className="w-[min(76vw,1400px)] shrink-0"
                   >
                     <SliderImage
                       image={image}
@@ -254,7 +254,7 @@ function SliderImage({
         alt={image.caption || "활동 사진"}
         fill
         priority={priority}
-        sizes="(min-width: 1025px) min(63.75vw, 1224px), 100vw"
+        sizes="(min-width: 1025px) min(76vw, 1400px), 100vw"
         className="rounded-[20px] object-cover"
         style={{
           borderRadius: 20,
@@ -387,7 +387,7 @@ function SiteHeader({onActivityClick}: {onActivityClick: () => void}) {
 
       <nav
         aria-label="주요 메뉴"
-        className="absolute right-[17px] top-[22px] flex items-center gap-[14px] text-[16px] leading-none text-white pc:right-[1.8vw] pc:top-[calc(3.8vh+5px)] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,2vw,48px)]"
+        className="absolute right-[17px] top-[16px] flex items-center gap-[14px] text-[16px] leading-none text-white pc:right-[1.8vw] pc:top-[3.2vh] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
       >
         <button type="button" onClick={onActivityClick}>
           활동
