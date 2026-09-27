@@ -174,8 +174,8 @@ export function ActivitySlider({images}: ActivitySliderProps) {
           </div>
         )}
 
-        <div className="absolute left-[3.44vw] right-[3.44vw] top-[24.08%]">
-          <div className="activity-slider-viewport overflow-hidden rounded-[20px] pr-6 [transform:translateZ(0)]">
+        <div className="absolute left-[3.44vw] right-0 top-[24.08%]">
+          <div className="activity-slider-viewport overflow-hidden [transform:translateZ(0)]">
             {loopedImages.length > 0 ? (
               <div
                 className={`flex overflow-visible ${
