@@ -22,7 +22,7 @@ export default function Home() {
 
         <nav
           aria-label="주요 메뉴"
-          className="absolute right-[17px] top-[16px] flex items-center gap-[14px] text-[16px] leading-none text-white pc:right-[var(--page-edge)] pc:top-[3.2vh] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
+          className="absolute right-[17px] top-[14px] flex items-center gap-[14px] text-[16px] leading-none text-white pc:right-[var(--page-edge)] pc:top-[calc(3.2vh-2px)] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
         >
           <Link href="/activity">활동</Link>
           <Link href="/recruit">모집</Link>

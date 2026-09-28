@@ -387,7 +387,7 @@ function SiteHeader({onActivityClick}: {onActivityClick: () => void}) {
 
       <nav
         aria-label="주요 메뉴"
-        className="absolute right-[17px] top-[16px] flex items-center gap-[14px] text-[16px] leading-none text-white pc:right-[1.8vw] pc:top-[3.2vh] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
+        className="absolute right-[17px] top-[14px] flex items-center gap-[14px] text-[16px] leading-none text-white pc:right-[1.8vw] pc:top-[calc(3.2vh-2px)] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
       >
         <button type="button" onClick={onActivityClick}>
           활동
