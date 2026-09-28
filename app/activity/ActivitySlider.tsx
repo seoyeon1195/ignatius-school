@@ -28,7 +28,7 @@ export function ActivitySlider({images}: ActivitySliderProps) {
   useEffect(() => {
     const contentTimer = window.setTimeout(() => {
       setIsContentVisible(true);
-    }, 2600);
+    }, 1600);
     const galleryTimer = window.setTimeout(() => {
       setIsMobileGalleryVisible(true);
     }, 1200);
@@ -132,7 +132,7 @@ export function ActivitySlider({images}: ActivitySliderProps) {
       <div
         aria-hidden="true"
         className={`crop-locked-graphic crop-locked-graphic--book fluid-gradient-motion pointer-events-none fixed top-[100px] z-0 aspect-[3/5] bg-[linear-gradient(120deg,#9bc8ff_0%,#dcebd5_42%,#acd5f1_68%,#9bc8ff_100%)] transition-all duration-[600ms] ease-in-out [mask-image:url('/graphics/book_mobile.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] pc:hidden ${
-          isContentVisible
+          isMobileGalleryVisible
             ? "translate-y-[min(410px,48svh)] opacity-36"
             : "translate-y-0 opacity-100"
         }`}
