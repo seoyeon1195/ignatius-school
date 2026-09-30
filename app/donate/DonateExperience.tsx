@@ -62,13 +62,17 @@ export function DonateExperience() {
         >
           <div className="donate-pencil-graphic absolute">
             <div
-              className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1600ms] ease-in-out ${
-                isAccountVisible ? "opacity-0" : "opacity-100"
+              className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity ease-in-out ${
+                isAccountVisible
+                  ? "opacity-0 duration-[0ms]"
+                  : "opacity-100 duration-[1600ms]"
               }`}
             />
             <div
-              className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1600ms] ease-in-out ${
-                isAccountVisible ? "opacity-100" : "opacity-0"
+              className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:right_bottom] [mask-repeat:no-repeat] [mask-size:112.34%_100%] transition-opacity ease-in-out ${
+                isAccountVisible
+                  ? "opacity-100 duration-[1600ms]"
+                  : "opacity-0 duration-[0ms]"
               }`}
             />
           </div>
@@ -98,13 +102,17 @@ export function DonateExperience() {
         className="crop-locked-graphic crop-locked-graphic--donate absolute aspect-[1059.16/1856.12] hidden pc:block pc:right-[10%] pc:top-[16.3%] pc:w-[min(40vw,780px)]"
       >
         <div
-          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1600ms] ease-in-out ${
-            isAccountVisible ? "opacity-0" : "opacity-100"
+          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity ease-in-out ${
+            isAccountVisible
+              ? "opacity-0 duration-[0ms]"
+              : "opacity-100 duration-[1600ms]"
           }`}
         />
         <div
-          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1600ms] ease-in-out ${
-            isAccountVisible ? "opacity-100" : "opacity-0"
+          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:right_bottom] [mask-repeat:no-repeat] [mask-size:112.34%_100%] transition-opacity ease-in-out ${
+            isAccountVisible
+              ? "opacity-100 duration-[1600ms]"
+              : "opacity-0 duration-[0ms]"
           }`}
         />
       </div>
