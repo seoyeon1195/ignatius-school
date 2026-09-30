@@ -60,7 +60,18 @@ export function DonateExperience() {
           aria-hidden="true"
           className="relative z-0 mt-8 h-[min(62svh,580px)] w-[calc(100%+17px)] shrink-0 overflow-hidden tab:mt-10 tab:h-[min(62svh,580px)] tab:w-[calc(100%+clamp(24px,3.5vw,40px))]"
         >
-          <div className="donate-pencil-graphic fluid-gradient-motion absolute bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]" />
+          <div className="donate-pencil-graphic absolute">
+            <div
+              className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1600ms] ease-in-out ${
+                isAccountVisible ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <div
+              className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1600ms] ease-in-out ${
+                isAccountVisible ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          </div>
         </div>
 
         <div

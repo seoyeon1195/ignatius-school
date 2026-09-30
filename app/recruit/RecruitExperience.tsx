@@ -90,7 +90,22 @@ export function RecruitExperience() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-y-0 left-0 -right-[17px] -bottom-[max(16px,env(safe-area-inset-bottom))] overflow-hidden tab:-right-[clamp(24px,3.5vw,40px)]"
           >
-            <div className="recruit-stand-graphic fluid-gradient-motion absolute top-0 aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%]" />
+            <div className="recruit-stand-graphic absolute top-0 aspect-[1080/1920]">
+              <div
+                className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1600ms] ease-in-out ${
+                  mode === "teacher" && isFirstParagraphVisible
+                    ? "opacity-0"
+                    : "opacity-100"
+                }`}
+              />
+              <div
+                className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1600ms] ease-in-out ${
+                  mode === "teacher" && isFirstParagraphVisible
+                    ? "opacity-100"
+                    : "opacity-0"
+                }`}
+              />
+            </div>
           </div>
 
           <div
