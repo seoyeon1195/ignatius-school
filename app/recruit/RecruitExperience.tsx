@@ -106,8 +106,23 @@ export function RecruitExperience() {
       {/* ≥1025: existing PC absolute layout */}
       <div
         aria-hidden="true"
-        className="crop-locked-graphic crop-locked-graphic--stand fluid-gradient-motion absolute aspect-[1080/1920] bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] hidden pc:block pc:right-[6%] pc:top-[15.2%] pc:w-[min(42vw,820px)]"
-      />
+        className="crop-locked-graphic crop-locked-graphic--stand absolute aspect-[1080/1920] hidden pc:block pc:right-[6%] pc:top-[15.2%] pc:w-[min(42vw,820px)]"
+      >
+        <div
+          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1600ms] ease-in-out ${
+            mode === "teacher" && isFirstParagraphVisible
+              ? "opacity-0"
+              : "opacity-100"
+          }`}
+        />
+        <div
+          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1600ms] ease-in-out ${
+            mode === "teacher" && isFirstParagraphVisible
+              ? "opacity-100"
+              : "opacity-0"
+          }`}
+        />
+      </div>
 
       <section
         aria-live="polite"

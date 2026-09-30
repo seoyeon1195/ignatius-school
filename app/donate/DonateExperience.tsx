@@ -84,8 +84,19 @@ export function DonateExperience() {
       {/* ≥1025: existing PC absolute layout */}
       <div
         aria-hidden="true"
-        className="crop-locked-graphic crop-locked-graphic--donate fluid-gradient-motion absolute aspect-[1059.16/1856.12] bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] hidden pc:block pc:right-[10%] pc:top-[16.3%] pc:w-[min(40vw,780px)]"
-      />
+        className="crop-locked-graphic crop-locked-graphic--donate absolute aspect-[1059.16/1856.12] hidden pc:block pc:right-[10%] pc:top-[16.3%] pc:w-[min(40vw,780px)]"
+      >
+        <div
+          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1600ms] ease-in-out ${
+            isAccountVisible ? "opacity-0" : "opacity-100"
+          }`}
+        />
+        <div
+          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1600ms] ease-in-out ${
+            isAccountVisible ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      </div>
 
       <section className="absolute left-[1.9vw] top-[17.5%] z-10 hidden w-[min(34vw,520px)] pc:block">
         <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(29px,3vw,92px)] leading-none text-transparent">
