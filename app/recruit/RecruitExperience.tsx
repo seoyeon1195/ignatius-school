@@ -18,7 +18,7 @@ export function RecruitExperience() {
     // Student hold, then teacher for the same span, then loop.
     const STUDENT_FADE = 5200;
     const TEACHER_START = 6800;
-    const TEACHER_FADE = TEACHER_START + STUDENT_FADE;
+    const TEACHER_FADE = TEACHER_START + STUDENT_FADE + 1500;
     const LOOP_RESTART = TEACHER_FADE + 1600;
 
     const timers = [
@@ -93,14 +93,14 @@ export function RecruitExperience() {
             <div className="recruit-stand-graphic absolute top-0 aspect-[1080/1920]">
               <div
                 className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[0ms] ${
-                  mode === "teacher" && isFirstParagraphVisible
+                  mode === "teacher"
                     ? "opacity-0"
                     : "opacity-100"
                 }`}
               />
               <div
-                className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[0ms] ${
-                  mode === "teacher" && isFirstParagraphVisible
+                className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:50.31%_37.52%] [mask-repeat:no-repeat] [mask-size:115.11%_102.79%] transition-opacity duration-[0ms] ${
+                  mode === "teacher"
                     ? "opacity-100"
                     : "opacity-0"
                 }`}
@@ -125,14 +125,14 @@ export function RecruitExperience() {
       >
         <div
           className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[0ms] ${
-            mode === "teacher" && isFirstParagraphVisible
+            mode === "teacher"
               ? "opacity-0"
               : "opacity-100"
           }`}
         />
         <div
-          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[0ms] ${
-            mode === "teacher" && isFirstParagraphVisible
+          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:50.31%_37.52%] [mask-repeat:no-repeat] [mask-size:115.11%_102.79%] transition-opacity duration-[0ms] ${
+            mode === "teacher"
               ? "opacity-100"
               : "opacity-0"
           }`}

@@ -7,17 +7,23 @@ import {useEffect, useState} from "react";
 export function DonateExperience() {
   const [isBodyVisible, setIsBodyVisible] = useState(false);
   const [isAccountVisible, setIsAccountVisible] = useState(false);
+  const [showPencilVariation, setShowPencilVariation] = useState(false);
 
   useEffect(() => {
     const bodyTimer = window.setTimeout(() => setIsBodyVisible(true), 100);
-    const accountTimer = window.setTimeout(
-      () => setIsAccountVisible(true),
-      1700,
+    const accountTimer = window.setTimeout(() => {
+      setIsAccountVisible(true);
+      setShowPencilVariation(true);
+    }, 1700);
+    const pencilTimer = window.setTimeout(
+      () => setShowPencilVariation(false),
+      4700,
     );
 
     return () => {
       window.clearTimeout(bodyTimer);
       window.clearTimeout(accountTimer);
+      window.clearTimeout(pencilTimer);
     };
   }, []);
 
@@ -63,12 +69,12 @@ export function DonateExperience() {
           <div className="donate-pencil-graphic absolute">
             <div
               className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[0ms] ${
-                isAccountVisible ? "opacity-0" : "opacity-100"
+                showPencilVariation ? "opacity-0" : "opacity-100"
               }`}
             />
             <div
               className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[0ms] ${
-                isAccountVisible ? "opacity-100" : "opacity-0"
+                showPencilVariation ? "opacity-100" : "opacity-0"
               }`}
             />
           </div>
@@ -99,12 +105,12 @@ export function DonateExperience() {
       >
         <div
           className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[0ms] ${
-            isAccountVisible ? "opacity-0" : "opacity-100"
+            showPencilVariation ? "opacity-0" : "opacity-100"
           }`}
         />
         <div
           className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[0ms] ${
-            isAccountVisible ? "opacity-100" : "opacity-0"
+            showPencilVariation ? "opacity-100" : "opacity-0"
           }`}
         />
       </div>
