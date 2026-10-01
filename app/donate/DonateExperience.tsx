@@ -73,7 +73,7 @@ export function DonateExperience() {
               }`}
             />
             <div
-              className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[0ms] ${
+              className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:69%_85.94%] [mask-repeat:no-repeat] [mask-size:124.26%_110.62%] transition-opacity duration-[0ms] ${
                 showPencilVariation ? "opacity-100" : "opacity-0"
               }`}
             />
@@ -109,7 +109,7 @@ export function DonateExperience() {
           }`}
         />
         <div
-          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[0ms] ${
+          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:69%_85.94%] [mask-repeat:no-repeat] [mask-size:124.26%_110.62%] transition-opacity duration-[0ms] ${
             showPencilVariation ? "opacity-100" : "opacity-0"
           }`}
         />

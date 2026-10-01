@@ -99,7 +99,7 @@ export function RecruitExperience() {
                 }`}
               />
               <div
-                className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:50.31%_37.52%] [mask-repeat:no-repeat] [mask-size:115.11%_102.79%] transition-opacity duration-[0ms] ${
+                className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:50.31%_62.83%] [mask-repeat:no-repeat] [mask-size:115.11%_102.79%] transition-opacity duration-[0ms] ${
                   mode === "teacher"
                     ? "opacity-100"
                     : "opacity-0"
@@ -131,7 +131,7 @@ export function RecruitExperience() {
           }`}
         />
         <div
-          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:50.31%_37.52%] [mask-repeat:no-repeat] [mask-size:115.11%_102.79%] transition-opacity duration-[0ms] ${
+          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:50.31%_62.83%] [mask-repeat:no-repeat] [mask-size:115.11%_102.79%] transition-opacity duration-[0ms] ${
             mode === "teacher"
               ? "opacity-100"
               : "opacity-0"
