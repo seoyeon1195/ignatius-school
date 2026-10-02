@@ -68,12 +68,12 @@ export function DonateExperience() {
         >
           <div className="donate-pencil-graphic absolute">
             <div
-              className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[0ms] ${
+              className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1000ms] ease-in-out ${
                 showPencilVariation ? "opacity-0" : "opacity-100"
               }`}
             />
             <div
-              className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:69%_85.94%] [mask-repeat:no-repeat] [mask-size:124.26%_110.62%] transition-opacity duration-[0ms] ${
+              className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:69%_85.94%] [mask-repeat:no-repeat] [mask-size:124.26%_110.62%] transition-opacity duration-[1000ms] ease-in-out ${
                 showPencilVariation ? "opacity-100" : "opacity-0"
               }`}
             />
@@ -104,12 +104,12 @@ export function DonateExperience() {
         className="crop-locked-graphic crop-locked-graphic--donate absolute aspect-[1059.16/1856.12] hidden pc:block pc:right-[10%] pc:top-[16.3%] pc:w-[min(40vw,780px)]"
       >
         <div
-          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[0ms] ${
+          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1000ms] ease-in-out ${
             showPencilVariation ? "opacity-0" : "opacity-100"
           }`}
         />
         <div
-          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:69%_85.94%] [mask-repeat:no-repeat] [mask-size:124.26%_110.62%] transition-opacity duration-[0ms] ${
+          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:69%_85.94%] [mask-repeat:no-repeat] [mask-size:124.26%_110.62%] transition-opacity duration-[1000ms] ease-in-out ${
             showPencilVariation ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -141,7 +141,7 @@ export function DonateExperience() {
       </section>
 
       <div
-        className={`absolute bottom-[2.5%] left-[1.9vw] z-10 hidden max-w-[min(34vw,520px)] bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-left text-[clamp(37px,3.61vw,90px)] leading-[1.15] text-transparent transition-opacity duration-[1600ms] ease-in-out pc:block ${
+        className={`absolute bottom-[2.5%] left-[1.9vw] z-10 hidden max-w-[min(34vw,520px)] bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-left text-[clamp(37px,3.61vw,90px)] leading-[1.15] text-transparent [overflow-wrap:anywhere] [word-break:break-all] transition-opacity duration-[1600ms] ease-in-out pc:block ${
           isAccountVisible ? "opacity-100" : "opacity-0"
         }`}
       >

@@ -151,7 +151,7 @@ export function ActivitySlider({images}: ActivitySliderProps) {
             : "pointer-events-none translate-y-6 opacity-0"
         }`}
       >
-        <h1 className="absolute left-[3.44vw] top-[16.4%] z-10 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(29px,3vw,92px)] leading-none text-transparent">
+        <h1 className="absolute left-[2.2vw] top-[16.4%] z-10 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(29px,3vw,92px)] leading-none text-transparent">
           활동 사진
         </h1>
 
@@ -174,7 +174,7 @@ export function ActivitySlider({images}: ActivitySliderProps) {
           </div>
         )}
 
-        <div className="absolute left-[3.44vw] right-0 top-[24.08%]">
+        <div className="absolute left-[2.2vw] right-0 top-[24.08%]">
           <div className="activity-slider-viewport overflow-hidden [transform:translateZ(0)]">
             {loopedImages.length > 0 ? (
               <div
@@ -204,7 +204,7 @@ export function ActivitySlider({images}: ActivitySliderProps) {
           </div>
         </div>
 
-        <div className="absolute inset-x-[3.44vw] bottom-[11%]">
+        <div className="absolute left-[2.2vw] right-[3.44vw] bottom-[11%]">
           {currentImage ? (
             <p
               className={`bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(16px,1.55vw,36px)] text-transparent transition-opacity duration-300 ${
@@ -410,12 +410,12 @@ function SiteFooter() {
           height={134}
           className="h-auto w-[3.95vw] max-w-[76px]"
         />
-        <span className="mt-1 text-[clamp(12px,1.05vw,24px)] font-medium text-white">
+        <span className="mt-1 text-[clamp(12px,1.05vw,24px)] font-medium text-black">
           성 이냐시오
         </span>
       </div>
 
-      <address className="ml-[0.5vw] flex items-end gap-[3.3vw] not-italic text-white">
+      <address className="ml-[0.5vw] flex min-w-0 items-end gap-[3.3vw] not-italic text-black [overflow-wrap:anywhere]">
         <div className="text-[clamp(12px,1.05vw,24px)] font-medium leading-[1.65]">
           <a href="tel:02-717-8248">02-717-8248</a>
           <br />

@@ -92,14 +92,14 @@ export function RecruitExperience() {
           >
             <div className="recruit-stand-graphic absolute top-0 aspect-[1080/1920]">
               <div
-                className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[0ms] ${
+                className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1000ms] ease-in-out ${
                   mode === "teacher"
                     ? "opacity-0"
                     : "opacity-100"
                 }`}
               />
               <div
-                className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:50.31%_62.83%] [mask-repeat:no-repeat] [mask-size:115.11%_102.79%] transition-opacity duration-[0ms] ${
+                className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:50.31%_62.83%] [mask-repeat:no-repeat] [mask-size:115.11%_102.79%] transition-opacity duration-[1000ms] ease-in-out ${
                   mode === "teacher"
                     ? "opacity-100"
                     : "opacity-0"
@@ -124,14 +124,14 @@ export function RecruitExperience() {
         className="crop-locked-graphic crop-locked-graphic--stand absolute aspect-[1080/1920] hidden pc:block pc:right-[6%] pc:top-[15.2%] pc:w-[min(42vw,820px)]"
       >
         <div
-          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[0ms] ${
+          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1000ms] ease-in-out ${
             mode === "teacher"
               ? "opacity-0"
               : "opacity-100"
           }`}
         />
         <div
-          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:50.31%_62.83%] [mask-repeat:no-repeat] [mask-size:115.11%_102.79%] transition-opacity duration-[0ms] ${
+          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:50.31%_62.83%] [mask-repeat:no-repeat] [mask-size:115.11%_102.79%] transition-opacity duration-[1000ms] ease-in-out ${
             mode === "teacher"
               ? "opacity-100"
               : "opacity-0"
@@ -153,7 +153,7 @@ export function RecruitExperience() {
         </div>
 
         <div
-          className={`absolute bottom-[2.8%] left-[1.9vw] z-10 max-w-[min(36vw,560px)] bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-left text-[clamp(29px,3.65vw,92px)] leading-[1.15] text-transparent transition-opacity duration-[1600ms] ease-in-out ${
+          className={`absolute bottom-[2.8%] left-[1.9vw] z-10 max-w-[min(36vw,560px)] bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-left text-[clamp(29px,3.65vw,92px)] leading-[1.15] text-transparent [overflow-wrap:anywhere] [word-break:break-all] transition-opacity duration-[1600ms] ease-in-out ${
             isBottomVisible ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -306,7 +306,7 @@ function RecruitCta({
         <span className="cta-line">Instagram</span>
       </p>
       <p>
-        <span className="cta-line">@ignatius__school</span>
+        <span className="cta-line block max-w-full [overflow-wrap:anywhere] [word-break:break-all]">@ignatius__school</span>
       </p>
     </>
   );
