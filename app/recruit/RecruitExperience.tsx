@@ -99,7 +99,7 @@ export function RecruitExperience() {
                 }`}
               />
               <div
-                className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:50.31%_62.83%] [mask-repeat:no-repeat] [mask-size:115.11%_102.79%] transition-opacity duration-[1000ms] ease-in-out ${
+                className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:50%_62.83%] [mask-repeat:no-repeat] [mask-size:118.1%_102.79%] transition-opacity duration-[1000ms] ease-in-out ${
                   mode === "teacher"
                     ? "opacity-100"
                     : "opacity-0"
@@ -131,7 +131,7 @@ export function RecruitExperience() {
           }`}
         />
         <div
-          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:50.31%_62.83%] [mask-repeat:no-repeat] [mask-size:115.11%_102.79%] transition-opacity duration-[1000ms] ease-in-out ${
+          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand_variation.svg')] [mask-position:50%_62.83%] [mask-repeat:no-repeat] [mask-size:118.1%_102.79%] transition-opacity duration-[1000ms] ease-in-out ${
             mode === "teacher"
               ? "opacity-100"
               : "opacity-0"
@@ -183,13 +183,33 @@ function RecruitBody({
   return (
     <>
       <h1
-        className={`bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text leading-none text-transparent ${
+        className={`leading-none ${
           isPc
             ? "text-[clamp(29px,3vw,92px)]"
             : "text-[clamp(29px,3vw,92px)]"
         }`}
       >
-        {isStudent ? "학생 모집" : "교사 모집"}
+        <span className="inline-grid">
+          <span
+            className={`col-start-1 row-start-1 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-transparent transition-opacity duration-[1000ms] ease-in-out ${
+              isStudent ? "opacity-100" : "opacity-0"
+            }`}
+            aria-hidden={!isStudent}
+          >
+            학생
+          </span>
+          <span
+            className={`col-start-1 row-start-1 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-transparent transition-opacity duration-[1000ms] ease-in-out ${
+              isStudent ? "opacity-0" : "opacity-100"
+            }`}
+            aria-hidden={isStudent}
+          >
+            교사
+          </span>
+        </span>{" "}
+        <span className="inline-block bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text leading-none text-transparent">
+          모집
+        </span>
       </h1>
 
       <div

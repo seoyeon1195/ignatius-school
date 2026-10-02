@@ -64,7 +64,7 @@ export function DonateExperience() {
         {/* Fixed-height clip frame — pencil cannot climb into body */}
         <div
           aria-hidden="true"
-          className="relative z-0 mt-8 h-[min(62svh,580px)] w-[calc(100%+17px)] shrink-0 overflow-hidden tab:mt-10 tab:h-[min(62svh,580px)] tab:w-[calc(100%+clamp(24px,3.5vw,40px))]"
+          className="relative z-0 mt-8 h-[min(62svh,580px)] w-[calc(100%+17px)] shrink-0 [clip-path:inset(-20%_0_-8%_-40%)] tab:mt-10 tab:h-[min(62svh,580px)] tab:w-[calc(100%+clamp(24px,3.5vw,40px))]"
         >
           <div className="donate-pencil-graphic absolute">
             <div
@@ -73,7 +73,7 @@ export function DonateExperience() {
               }`}
             />
             <div
-              className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:69%_85.94%] [mask-repeat:no-repeat] [mask-size:124.26%_110.62%] transition-opacity duration-[1000ms] ease-in-out ${
+              className={`fluid-gradient-motion absolute left-[-16.7394%] top-[-9.1268%] h-[110.62%] w-[124.26%] bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1000ms] ease-in-out ${
                 showPencilVariation ? "opacity-100" : "opacity-0"
               }`}
             />
@@ -109,7 +109,7 @@ export function DonateExperience() {
           }`}
         />
         <div
-          className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:69%_85.94%] [mask-repeat:no-repeat] [mask-size:124.26%_110.62%] transition-opacity duration-[1000ms] ease-in-out ${
+          className={`fluid-gradient-motion absolute left-[-16.7394%] top-[-9.1268%] h-[110.62%] w-[124.26%] bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder_variation.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1000ms] ease-in-out ${
             showPencilVariation ? "opacity-100" : "opacity-0"
           }`}
         />
