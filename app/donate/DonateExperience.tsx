@@ -36,7 +36,7 @@ export function DonateExperience() {
         1) body  2) pencil frame (below body, right crop)  3) account below graphic
       */}
       <div className="relative z-10 flex min-h-[100svh] flex-col px-[17px] pb-8 pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden">
-        <section className="relative z-20 w-full max-w-[340px] shrink-0 tab:max-w-[min(52vw,520px)]">
+        <section className="relative z-20 w-full min-w-0 max-w-[340px] shrink-0 [overflow-wrap:anywhere] tab:max-w-[min(52vw,520px)]">
           <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(29px,3vw,92px)] leading-none text-transparent">
             후원 안내
           </h1>

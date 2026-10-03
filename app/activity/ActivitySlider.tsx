@@ -279,12 +279,12 @@ function MobileActivityGallery({images}: {images: ActivityImage[]}) {
   return (
     <section
       aria-label="모바일 활동 사진 목록"
-      className={`relative z-20 h-[100svh] overflow-y-auto overscroll-y-contain scroll-smooth px-[17px] pt-[79px] [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden transition-opacity duration-700 ease-out pc:hidden ${
+      className={`relative z-20 h-[100svh] overflow-y-auto overscroll-y-contain scroll-smooth pl-[12px] pr-[17px] pt-[79px] [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden transition-opacity duration-700 ease-out pc:hidden ${
         hasEntered ? "opacity-100" : "opacity-0"
       }`}
       style={{scrollSnapType: "y mandatory"}}
     >
-      <div className="flex flex-col pb-10">
+      <div className="flex min-w-0 flex-col pb-10">
         {images.length > 0 ? (
           images.map((image, index) => (
             <MobileActivityItem
@@ -349,14 +349,14 @@ function MobileActivityItem({
           alt={image.caption || `활동 사진 ${index + 1}`}
           fill
           priority={index === 0}
-          sizes="(max-width: 393px) calc(100vw - 34px), 393px"
+          sizes="(max-width: 393px) calc(100vw - 29px), 393px"
           className="rounded-[10px] object-cover"
           style={{borderRadius: 10}}
         />
       </div>
       {image.caption && (
         <p
-          className={`mt-3 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[16px] text-transparent transition-opacity duration-700 ease-in-out ${
+          className={`mt-3 min-w-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[16px] text-transparent [overflow-wrap:anywhere] transition-opacity duration-700 ease-in-out ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -373,7 +373,7 @@ function SiteHeader({onActivityClick}: {onActivityClick: () => void}) {
       <Link
         href="/"
         aria-label="성 이냐시오 학교 메인"
-        className="absolute left-[18px] top-[14px] pc:left-[2vw] pc:top-[3.2vh]"
+        className="absolute left-[12px] top-[14px] pc:left-[2vw] pc:top-[3.2vh]"
       >
         <Image
           src="/logos/logo_grad.svg"

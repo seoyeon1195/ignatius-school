@@ -340,8 +340,10 @@ body {
 
   .recruit-cta-mobile,
   .donate-account-mobile {
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
     word-break: keep-all;
-    overflow-wrap: normal;
   }
 
   .recruit-cta-mobile .cta-line,
@@ -352,6 +354,14 @@ body {
     max-width: 100%;
     white-space: nowrap;
     word-break: keep-all;
+  }
+
+  /* Long unbreakable tokens: wrap instead of clipping past the right edge */
+  .recruit-cta-mobile .cta-handle,
+  .donate-account-mobile .cta-line {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-all;
   }
 
   @media (max-width: 340px) {

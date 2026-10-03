@@ -75,7 +75,7 @@ export function RecruitExperience() {
         aria-live="polite"
         className="relative flex min-h-[100svh] flex-col px-[17px] pb-[max(16px,env(safe-area-inset-bottom))] pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden"
       >
-        <div className="relative z-20 w-full max-w-[340px] shrink-0 tab:max-w-[min(52vw,520px)]">
+        <div className="relative z-20 w-full min-w-0 max-w-[340px] shrink-0 [overflow-wrap:anywhere] tab:max-w-[min(52vw,520px)]">
           <RecruitBody
             mode={mode}
             isFirstParagraphVisible={isFirstParagraphVisible}
@@ -310,11 +310,8 @@ function RecruitCta({
         <p className="block">
           <span className="cta-line">Instagram</span>
         </p>
-        <p className="block">
-          <span className="cta-line">@ignatius__</span>
-        </p>
-        <p className="block">
-          <span className="cta-line">school</span>
+        <p className="block min-w-0 max-w-full">
+          <span className="cta-line cta-handle">@ignatius__school</span>
         </p>
       </>
     );
