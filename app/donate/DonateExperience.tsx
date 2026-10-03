@@ -10,20 +10,25 @@ export function DonateExperience() {
   const [showPencilVariation, setShowPencilVariation] = useState(false);
 
   useEffect(() => {
+    const HOLD_MS = 3500;
+    const ACCOUNT_START = 1700;
+    let pencilInterval: number | undefined;
+
     const bodyTimer = window.setTimeout(() => setIsBodyVisible(true), 100);
     const accountTimer = window.setTimeout(() => {
       setIsAccountVisible(true);
       setShowPencilVariation(true);
-    }, 1700);
-    const pencilTimer = window.setTimeout(
-      () => setShowPencilVariation(false),
-      4700,
-    );
+      pencilInterval = window.setInterval(() => {
+        setShowPencilVariation((prev) => !prev);
+      }, HOLD_MS);
+    }, ACCOUNT_START);
 
     return () => {
       window.clearTimeout(bodyTimer);
       window.clearTimeout(accountTimer);
-      window.clearTimeout(pencilTimer);
+      if (pencilInterval !== undefined) {
+        window.clearInterval(pencilInterval);
+      }
     };
   }, []);
 

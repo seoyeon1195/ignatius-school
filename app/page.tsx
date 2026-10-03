@@ -8,7 +8,7 @@ export default function Home() {
         <Link
           href="/"
           aria-label="성 이냐시오 학교 메인"
-          className="absolute left-[18px] top-[14px] pc:left-[var(--page-edge)] pc:top-[3.2vh]"
+          className="absolute left-[18px] top-[14px] pc:left-[2vw] pc:top-[3.2vh]"
         >
           <Image
             src="/logos/logo_grad.svg"
@@ -22,7 +22,7 @@ export default function Home() {
 
         <nav
           aria-label="주요 메뉴"
-          className="absolute right-[17px] top-[14px] flex items-center gap-[14px] text-[16px] leading-none text-white pc:right-[var(--page-edge)] pc:top-[calc(3.2vh-2px)] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
+          className="absolute right-[17px] top-[14px] flex items-center gap-[14px] text-[16px] leading-none text-white pc:right-[1.8vw] pc:top-[calc(3.2vh-2px)] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
         >
           <Link href="/activity">활동</Link>
           <Link href="/recruit">모집</Link>
@@ -30,8 +30,8 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* PC (>=1025px): 헤더·슬로건·푸터 공통 --page-edge(37px) */}
-      <section className="absolute inset-x-0 top-[19%] z-10 hidden items-center justify-between break-keep bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text px-[var(--page-edge)] text-[clamp(42px,3.4vw,92px)] leading-none tracking-[-0.04em] text-transparent pc:flex">
+      {/* PC (>=1025px): 헤더·슬로건·푸터 — 활동/모집/후원과 동일 (좌 2vw / 우 1.8vw) */}
+      <section className="absolute inset-x-0 top-[19%] z-10 hidden items-center justify-between break-keep bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pl-[2vw] pr-[1.8vw] text-[clamp(42px,3.4vw,92px)] leading-none tracking-[-0.04em] text-transparent pc:flex">
         <h1 className="break-keep whitespace-nowrap">만학의 꿈이 이뤄지는 곳,</h1>
         <p className="break-keep whitespace-nowrap">성 이냐시오 학교입니다.</p>
       </section>
@@ -74,7 +74,7 @@ export default function Home() {
           </section>
 
           <footer className="relative z-10 mt-auto w-full pb-3 pt-8 [font-family:var(--font-noto-sans-kr)] pc:pb-[2.4vh] pc:pt-10">
-            <div className="hidden w-full items-end px-[var(--page-edge)] pc:flex">
+            <div className="hidden w-full items-end pl-[2vw] pr-[1.8vw] pc:flex">
               <div className="flex w-[7.55vw] max-w-[145px] flex-col items-start">
                 <Image
                   src="/logos/logo_black.svg"

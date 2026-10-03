@@ -183,33 +183,13 @@ function RecruitBody({
   return (
     <>
       <h1
-        className={`leading-none ${
+        className={`bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text leading-none text-transparent transition-opacity duration-[1600ms] ease-in-out ${
           isPc
             ? "text-[clamp(29px,3vw,92px)]"
             : "text-[clamp(29px,3vw,92px)]"
-        }`}
+        } ${isFirstParagraphVisible ? "opacity-100" : "opacity-0"}`}
       >
-        <span className="inline-grid">
-          <span
-            className={`col-start-1 row-start-1 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-transparent transition-opacity duration-[1000ms] ease-in-out ${
-              isStudent ? "opacity-100" : "opacity-0"
-            }`}
-            aria-hidden={!isStudent}
-          >
-            학생
-          </span>
-          <span
-            className={`col-start-1 row-start-1 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-transparent transition-opacity duration-[1000ms] ease-in-out ${
-              isStudent ? "opacity-0" : "opacity-100"
-            }`}
-            aria-hidden={isStudent}
-          >
-            교사
-          </span>
-        </span>{" "}
-        <span className="inline-block bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text leading-none text-transparent">
-          모집
-        </span>
+        {isStudent ? "학생 모집" : "교사 모집"}
       </h1>
 
       <div
