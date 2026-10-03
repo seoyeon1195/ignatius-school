@@ -10,7 +10,7 @@ export function DonateExperience() {
   const [showPencilVariation, setShowPencilVariation] = useState(false);
 
   useEffect(() => {
-    const HOLD_MS = 3500;
+    const HOLD_MS = 5500;
     const ACCOUNT_START = 1700;
     let pencilInterval: number | undefined;
 
