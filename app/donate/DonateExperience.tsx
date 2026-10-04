@@ -40,7 +40,7 @@ export function DonateExperience() {
         ≤1024 Flex column (시안 3):
         1) body  2) pencil frame (below body, right crop)  3) account below graphic
       */}
-      <div className="relative z-10 flex min-h-[100svh] flex-col px-[17px] pb-8 pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden">
+      <div className="relative z-10 flex min-h-[100svh] flex-col pl-[12px] pr-[17px] pb-8 pt-[136px] tab:pt-[clamp(120px,15vh,168px)] pc:hidden">
         <section className="relative z-20 w-full min-w-0 max-w-[340px] shrink-0 [overflow-wrap:anywhere] tab:max-w-[min(52vw,520px)]">
           <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(29px,3vw,92px)] leading-none text-transparent">
             후원 안내
@@ -166,7 +166,7 @@ function SiteHeader() {
       <Link
         href="/"
         aria-label="성 이냐시오 학교 메인"
-        className="absolute left-[18px] top-[14px] pc:left-[2vw] pc:top-[3.2vh]"
+        className="absolute left-[12px] top-[14px] pc:left-[2vw] pc:top-[3.2vh]"
       >
         <Image
           src="/logos/logo_grad.svg"

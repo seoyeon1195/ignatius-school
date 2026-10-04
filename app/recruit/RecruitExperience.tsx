@@ -73,7 +73,7 @@ export function RecruitExperience() {
       */}
       <div
         aria-live="polite"
-        className="relative flex min-h-[100svh] flex-col px-[17px] pb-[max(16px,env(safe-area-inset-bottom))] pt-[136px] tab:px-[clamp(24px,3.5vw,40px)] tab:pt-[clamp(120px,15vh,168px)] pc:hidden"
+        className="relative flex min-h-[100svh] flex-col pl-[12px] pr-[17px] pb-[max(16px,env(safe-area-inset-bottom))] pt-[136px] tab:pt-[clamp(120px,15vh,168px)] pc:hidden"
       >
         <div className="relative z-20 w-full min-w-0 max-w-[340px] shrink-0 [overflow-wrap:anywhere] tab:max-w-[min(52vw,520px)]">
           <RecruitBody
@@ -315,7 +315,7 @@ function SiteHeader({onRecruitClick}: {onRecruitClick: () => void}) {
       <Link
         href="/"
         aria-label="성 이냐시오 학교 메인"
-        className="absolute left-[18px] top-[14px] pc:left-[2vw] pc:top-[3.2vh]"
+        className="absolute left-[12px] top-[14px] pc:left-[2vw] pc:top-[3.2vh]"
       >
         <Image
           src="/logos/logo_grad.svg"

@@ -8,7 +8,7 @@ export default function Home() {
         <Link
           href="/"
           aria-label="성 이냐시오 학교 메인"
-          className="absolute left-[18px] top-[14px] pc:left-[2vw] pc:top-[3.2vh]"
+          className="absolute left-[12px] top-[14px] pc:left-[2vw] pc:top-[3.2vh]"
         >
           <Image
             src="/logos/logo_grad.svg"
@@ -43,7 +43,7 @@ export default function Home() {
         />
 
         <div className="fluid-light-back relative z-[1] -mt-[calc(var(--light-w)*760.93/891.34*0.18)] flex w-full flex-1 flex-col">
-          <section className="relative z-10 break-keep px-4 pt-[calc(var(--flare-depth)+var(--title-buffer))] tab:max-w-[min(72vw,640px)] tab:px-[clamp(24px,3.5vw,40px)] pc:hidden">
+          <section className="relative z-10 break-keep pl-[12px] pr-[17px] pt-[calc(var(--flare-depth)+var(--title-buffer))] tab:max-w-[min(72vw,640px)] pc:hidden">
             <h1 className="text-[clamp(28px,7.6vw,30px)] leading-[1.55] tracking-[-0.04em] tab:text-[clamp(30px,3.8vw,42px)]">
               만학의 꿈이 이뤄지는 곳,
               <br />
@@ -51,7 +51,7 @@ export default function Home() {
             </h1>
           </section>
 
-          <section className="relative z-10 mt-[13px] break-keep px-4 text-[clamp(15px,4.1vw,16px)] leading-[1.55] tracking-[-0.025em] tab:mt-[clamp(13px,2vh,20px)] tab:max-w-[min(72vw,640px)] tab:px-[clamp(24px,3.5vw,40px)] tab:text-[clamp(16px,2.1vw,20px)] pc:mx-auto pc:mt-[clamp(64px,10vh,140px)] pc:max-w-[min(52vw,920px)] pc:px-0 pc:text-center pc:text-[clamp(21px,1.7vw,40px)]">
+          <section className="relative z-10 mt-[13px] break-keep pl-[12px] pr-[17px] text-[clamp(15px,4.1vw,16px)] leading-[1.55] tracking-[-0.025em] tab:mt-[clamp(13px,2vh,20px)] tab:max-w-[min(72vw,640px)] tab:text-[clamp(16px,2.1vw,20px)] pc:mx-auto pc:mt-[clamp(64px,10vh,140px)] pc:max-w-[min(52vw,920px)] pc:px-0 pc:text-center pc:text-[clamp(21px,1.7vw,40px)]">
             <p>
               성 이냐시오 학교는 1977년부터{" "}
               <br className="pc:hidden" />
@@ -109,7 +109,7 @@ export default function Home() {
               />
             </div>
 
-            <div className="flex w-full items-end justify-between px-4 tab:px-[clamp(24px,3.5vw,40px)] pc:hidden">
+            <div className="flex w-full items-end justify-between pl-[12px] pr-[17px] pc:hidden">
               <address className="not-italic text-[13px] font-normal leading-[1.45]">
                 <p>
                   <a href="tel:02-717-8248">02-717-8248</a>
