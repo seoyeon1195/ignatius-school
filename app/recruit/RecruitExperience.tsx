@@ -73,7 +73,7 @@ export function RecruitExperience() {
       */}
       <div
         aria-live="polite"
-        className="relative flex min-h-[100svh] flex-col pl-[12px] pr-[17px] pb-[max(16px,env(safe-area-inset-bottom))] pt-[136px] tab:pt-[clamp(120px,15vh,168px)] pc:hidden"
+        className="relative flex min-h-[100svh] flex-col px-[12px] pb-[max(16px,env(safe-area-inset-bottom))] pt-[136px] tab:pt-[clamp(120px,15vh,168px)] pc:hidden"
       >
         <div className="relative z-20 w-full min-w-0 max-w-[340px] shrink-0 [overflow-wrap:anywhere] tab:max-w-[min(52vw,520px)]">
           <RecruitBody
@@ -88,7 +88,7 @@ export function RecruitExperience() {
         <div className="relative z-0 mt-6 flex min-h-0 flex-1 flex-col">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 left-0 -right-[17px] -bottom-[max(16px,env(safe-area-inset-bottom))] overflow-hidden tab:-right-[clamp(24px,3.5vw,40px)]"
+            className="pointer-events-none absolute inset-y-0 left-0 -right-[12px] -bottom-[max(16px,env(safe-area-inset-bottom))] overflow-hidden"
           >
             <div className="recruit-stand-graphic absolute top-0 aspect-[1080/1920]">
               <div
@@ -329,7 +329,7 @@ function SiteHeader({onRecruitClick}: {onRecruitClick: () => void}) {
 
       <nav
         aria-label="주요 메뉴"
-        className="absolute right-[17px] top-[14px] flex items-center gap-[14px] text-[16px] leading-none pc:right-[1.8vw] pc:top-[calc(3.2vh-2px)] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
+        className="absolute right-[12px] top-[14px] flex items-center gap-[14px] text-[16px] leading-none pc:right-[1.8vw] pc:top-[calc(3.2vh-2px)] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
       >
         <Link href="/activity">활동</Link>
         <button type="button" onClick={onRecruitClick}>

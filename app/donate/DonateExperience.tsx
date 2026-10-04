@@ -40,7 +40,7 @@ export function DonateExperience() {
         ≤1024 Flex column (시안 3):
         1) body  2) pencil frame (below body, right crop)  3) account below graphic
       */}
-      <div className="relative z-10 flex min-h-[100svh] flex-col pl-[12px] pr-[17px] pb-8 pt-[136px] tab:pt-[clamp(120px,15vh,168px)] pc:hidden">
+      <div className="relative z-10 flex min-h-[100svh] flex-col px-[12px] pb-8 pt-[136px] tab:pt-[clamp(120px,15vh,168px)] pc:hidden">
         <section className="relative z-20 w-full min-w-0 max-w-[340px] shrink-0 [overflow-wrap:anywhere] tab:max-w-[min(52vw,520px)]">
           <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(29px,3vw,92px)] leading-none text-transparent">
             후원 안내
@@ -69,7 +69,7 @@ export function DonateExperience() {
         {/* Fixed-height clip frame — pencil cannot climb into body */}
         <div
           aria-hidden="true"
-          className="relative z-0 mt-8 h-[min(62svh,580px)] w-[calc(100%+17px)] shrink-0 [clip-path:inset(-20%_0_-8%_-40%)] tab:mt-10 tab:h-[min(62svh,580px)] tab:w-[calc(100%+clamp(24px,3.5vw,40px))]"
+          className="relative z-0 mt-8 h-[min(62svh,580px)] w-[calc(100%+12px)] shrink-0 [clip-path:inset(-20%_0_-8%_-40%)] tab:mt-10 tab:h-[min(62svh,580px)]"
         >
           <div className="donate-pencil-graphic absolute">
             <div
@@ -180,7 +180,7 @@ function SiteHeader() {
 
       <nav
         aria-label="주요 메뉴"
-        className="absolute right-[17px] top-[14px] flex items-center gap-[14px] text-[16px] leading-none pc:right-[1.8vw] pc:top-[calc(3.2vh-2px)] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
+        className="absolute right-[12px] top-[14px] flex items-center gap-[14px] text-[16px] leading-none pc:right-[1.8vw] pc:top-[calc(3.2vh-2px)] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
       >
         <Link href="/activity">활동</Link>
         <Link href="/recruit">모집</Link>

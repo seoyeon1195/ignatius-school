@@ -279,7 +279,7 @@ function MobileActivityGallery({images}: {images: ActivityImage[]}) {
   return (
     <section
       aria-label="모바일 활동 사진 목록"
-      className={`relative z-20 h-[100svh] overflow-y-auto overscroll-y-contain scroll-smooth pl-[12px] pr-[17px] pt-[79px] [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden transition-opacity duration-700 ease-out pc:hidden ${
+      className={`relative z-20 h-[100svh] overflow-y-auto overscroll-y-contain scroll-smooth px-[12px] pt-[79px] [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden transition-opacity duration-700 ease-out pc:hidden ${
         hasEntered ? "opacity-100" : "opacity-0"
       }`}
       style={{scrollSnapType: "y mandatory"}}
@@ -349,7 +349,7 @@ function MobileActivityItem({
           alt={image.caption || `활동 사진 ${index + 1}`}
           fill
           priority={index === 0}
-          sizes="(max-width: 393px) calc(100vw - 29px), 393px"
+          sizes="(max-width: 393px) calc(100vw - 24px), 393px"
           className="rounded-[10px] object-cover"
           style={{borderRadius: 10}}
         />
@@ -387,7 +387,7 @@ function SiteHeader({onActivityClick}: {onActivityClick: () => void}) {
 
       <nav
         aria-label="주요 메뉴"
-        className="absolute right-[17px] top-[14px] flex items-center gap-[14px] text-[16px] leading-none text-white pc:right-[1.8vw] pc:top-[calc(3.2vh-2px)] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
+        className="absolute right-[12px] top-[14px] flex items-center gap-[14px] text-[16px] leading-none text-white pc:right-[1.8vw] pc:top-[calc(3.2vh-2px)] pc:gap-[clamp(14px,1.45vw,28px)] pc:text-[clamp(16px,1.5vw,48px)]"
       >
         <button type="button" onClick={onActivityClick}>
           활동
