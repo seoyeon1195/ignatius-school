@@ -307,8 +307,11 @@ body {
     width: 85vw !important;
     max-width: 480px !important;
     aspect-ratio: 1080 / 1920;
-    /* Mobile only: nudge stand + variation 5px right together (Y unchanged). */
-    transform: translateX(5px);
+    /*
+      Base +5px right; --recruit-stand-gap-shift adds more only when the
+      CTA↔graphic gap would drop below 15px (set from RecruitExperience).
+    */
+    transform: translateX(calc(5px + var(--recruit-stand-gap-shift, 0px)));
     pointer-events: none;
   }
 

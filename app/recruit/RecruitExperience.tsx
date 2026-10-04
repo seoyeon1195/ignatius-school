@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
 
 type RecruitMode = "student" | "teacher";
+
+const RECRUIT_STAND_MIN_GAP_PX = 15;
 
 export function RecruitExperience() {
   const [mode, setMode] = useState<RecruitMode>("student");
@@ -13,6 +15,8 @@ export function RecruitExperience() {
     useState(false);
   const [isBottomVisible, setIsBottomVisible] = useState(false);
   const [sequence, setSequence] = useState(0);
+  const mobileCtaRef = useRef<HTMLDivElement>(null);
+  const mobileStandRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Student hold, then teacher for the same span, then loop.
@@ -55,6 +59,42 @@ export function RecruitExperience() {
     return () => timers.forEach((timer) => window.clearTimeout(timer));
   }, [sequence]);
 
+  useLayoutEffect(() => {
+    const stand = mobileStandRef.current;
+    const cta = mobileCtaRef.current;
+    if (!stand || !cta) {
+      return;
+    }
+
+    function updateStandGapShift() {
+      if (window.matchMedia("(min-width: 1025px)").matches) {
+        stand!.style.setProperty("--recruit-stand-gap-shift", "0px");
+        return;
+      }
+
+      // Measure with only the base +5px shift (extra shift cleared).
+      stand!.style.setProperty("--recruit-stand-gap-shift", "0px");
+      const gap =
+        stand!.getBoundingClientRect().left - cta!.getBoundingClientRect().right;
+      const extra =
+        gap < RECRUIT_STAND_MIN_GAP_PX ? RECRUIT_STAND_MIN_GAP_PX - gap : 0;
+      stand!.style.setProperty("--recruit-stand-gap-shift", `${extra}px`);
+    }
+
+    updateStandGapShift();
+    const frame = window.requestAnimationFrame(updateStandGapShift);
+    const observer = new ResizeObserver(updateStandGapShift);
+    observer.observe(stand);
+    observer.observe(cta);
+    window.addEventListener("resize", updateStandGapShift);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("resize", updateStandGapShift);
+    };
+  }, [mode, isBottomVisible, sequence]);
+
   function restartSequence() {
     setMode("student");
     setIsFirstParagraphVisible(false);
@@ -90,7 +130,10 @@ export function RecruitExperience() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-y-0 left-0 -right-[12px] -bottom-[max(16px,env(safe-area-inset-bottom))] overflow-hidden"
           >
-            <div className="recruit-stand-graphic absolute top-0 aspect-[1080/1920]">
+            <div
+              ref={mobileStandRef}
+              className="recruit-stand-graphic absolute top-0 aspect-[1080/1920]"
+            >
               <div
                 className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(125deg,#d9e6ca_0%,#9dc9ff_48%,#d9e6ca_100%)] [mask-image:url('/graphics/stand.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1000ms] ease-in-out ${
                   mode === "teacher"
@@ -109,7 +152,8 @@ export function RecruitExperience() {
           </div>
 
           <div
-            className={`recruit-cta-mobile relative z-20 mt-auto min-h-fit w-full max-w-[340px] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-4 text-left text-[30px] leading-[1.25] text-transparent transition-opacity duration-[1600ms] ease-in-out tab:max-w-[min(52vw,520px)] tab:text-[clamp(30px,3.9vw,40px)] ${
+            ref={mobileCtaRef}
+            className={`recruit-cta-mobile relative z-20 mt-auto min-h-fit w-fit max-w-[340px] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-4 text-left text-[30px] leading-[1.25] text-transparent transition-opacity duration-[1600ms] ease-in-out tab:max-w-[min(52vw,520px)] tab:text-[clamp(30px,3.9vw,40px)] ${
               isBottomVisible ? "opacity-100" : "opacity-0"
             }`}
           >
