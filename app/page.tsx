@@ -44,14 +44,14 @@ export default function Home() {
 
         <div className="fluid-light-back relative z-[1] -mt-[calc(var(--light-w)*760.93/891.34*0.18)] flex w-full flex-1 flex-col">
           <section className="relative z-10 break-keep px-[12px] pt-[calc(var(--flare-depth)+var(--title-buffer))] tab:max-w-[min(72vw,640px)] pc:hidden">
-            <h1 className="text-[clamp(28px,7.6vw,30px)] leading-[1.55] tracking-[-0.04em] tab:text-[clamp(30px,3.8vw,42px)]">
+            <h1 className="text-[clamp(28px,7.6vw,30px)] leading-[calc(1.55em-1px)] tracking-[-0.04em] tab:text-[clamp(30px,3.8vw,42px)]">
               만학의 꿈이 이뤄지는 곳,
               <br />
               성 이냐시오 학교입니다.
             </h1>
           </section>
 
-          <section className="relative z-10 mt-[13px] break-keep px-[12px] text-[clamp(15px,4.1vw,16px)] leading-[1.55] tracking-[-0.025em] tab:mt-[clamp(13px,2vh,20px)] tab:max-w-[min(72vw,640px)] tab:text-[clamp(16px,2.1vw,20px)] pc:mx-auto pc:mt-[clamp(64px,10vh,140px)] pc:max-w-[min(52vw,920px)] pc:px-0 pc:text-center pc:text-[clamp(21px,1.7vw,40px)]">
+          <section className="relative z-10 mt-[13px] break-keep px-[12px] text-[clamp(15px,4.1vw,16px)] leading-[calc(1.55em-1px)] tracking-[-0.025em] tab:mt-[clamp(13px,2vh,20px)] tab:max-w-[min(72vw,640px)] tab:text-[clamp(16px,2.1vw,20px)] pc:mx-auto pc:mt-[clamp(64px,10vh,140px)] pc:max-w-[min(52vw,920px)] pc:px-0 pc:text-center pc:text-[clamp(21px,1.7vw,40px)]">
             <p>
               성 이냐시오 학교는 1977년부터{" "}
               <br className="pc:hidden" />
@@ -118,7 +118,7 @@ export default function Home() {
                     ignatius_school@nate.com
                   </a>
                 </p>
-                <p className="mt-3.5">
+                <p className="mt-[11px]">
                   서울특별시 마포구 백범로 35
                   <br />
                   (교무실) 곤자가 플라자 B 102호
