@@ -47,7 +47,7 @@ export function DonateExperience() {
           </h1>
 
           <div
-            className={`mt-[18px] break-keep text-[16px] leading-[1.6] tracking-[-0.02em] transition-opacity duration-[1600ms] ease-in-out tab:mt-[clamp(18px,2.2vh,24px)] tab:text-[clamp(16px,2.05vw,20px)] ${
+            className={`mt-[18px] break-keep text-[16px] leading-[calc(1.6em-2px)] tracking-[-0.02em] transition-opacity duration-[1600ms] ease-in-out tab:mt-[clamp(18px,2.2vh,24px)] tab:text-[clamp(16px,2.05vw,20px)] ${
               isBodyVisible ? "opacity-100" : "opacity-0"
             }`}
           >
@@ -126,7 +126,7 @@ export function DonateExperience() {
         </h1>
 
         <div
-          className={`mt-[18px] break-keep text-[clamp(20px,1.95vw,48px)] leading-[1.65] tracking-[-0.02em] transition-opacity duration-[1600ms] ease-in-out ${
+          className={`mt-[18px] break-keep text-[clamp(20px,1.95vw,48px)] leading-[calc(1.65em-2px)] tracking-[-0.02em] transition-opacity duration-[1600ms] ease-in-out ${
             isBodyVisible ? "opacity-100" : "opacity-0"
           }`}
         >
