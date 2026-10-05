@@ -31,7 +31,7 @@ export default function Home() {
       </header>
 
       {/* PC (>=1025px): 헤더·슬로건·푸터 — 활동/모집/후원과 동일 (좌 2vw / 우 1.8vw) */}
-      <section className="absolute inset-x-0 z-10 hidden items-center justify-between break-keep bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pl-[2vw] pr-[1.8vw] text-[clamp(42px,3.4vw,92px)] leading-none tracking-[-0.04em] text-transparent pc:top-[calc(3.2vh+min(7.8vw,150px)*134/200+75px)] pc:flex">
+      <section className="home-pc-slogan absolute inset-x-0 z-10 hidden items-center justify-between break-keep bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pl-[2vw] pr-[1.8vw] text-[clamp(42px,3.4vw,92px)] leading-none tracking-[-0.04em] text-transparent pc:flex">
         <h1 className="break-keep whitespace-nowrap">만학의 꿈이 이뤄지는 곳,</h1>
         <p className="break-keep whitespace-nowrap">성 이냐시오 학교입니다.</p>
       </section>

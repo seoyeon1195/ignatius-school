@@ -389,6 +389,17 @@ body {
     z-index: 0;
     pointer-events: none;
   }
+
+  /* Home: logo bottom → PC slogan top gap (default 75px; 1025–1085 → 45px) */
+  .home-pc-slogan {
+    top: calc(3.2vh + min(7.8vw, 150px) * 134 / 200 + 75px);
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1085px) {
+  .home-pc-slogan {
+    top: calc(3.2vh + min(7.8vw, 150px) * 134 / 200 + 45px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
