@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState, type PointerEvent} from "react";
 
 import {urlFor} from "@/sanity/image";
 import type {ActivityImage} from "@/sanity/queries";
@@ -22,8 +22,15 @@ export function ActivitySlider({images}: ActivitySliderProps) {
   const [isMobileGalleryVisible, setIsMobileGalleryVisible] = useState(false);
   const [isCaptionVisible, setIsCaptionVisible] = useState(true);
   const [introSequence, setIntroSequence] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
   const captionSwapTimer = useRef<number | null>(null);
   const captionRevealTimer = useRef<number | null>(null);
+  const dragRef = useRef<{
+    active: boolean;
+    startX: number;
+    pointerId: number | null;
+  }>({active: false, startX: 0, pointerId: null});
 
   useEffect(() => {
     const contentTimer = window.setTimeout(() => {
@@ -106,6 +113,57 @@ export function ActivitySlider({images}: ActivitySliderProps) {
     setIntroSequence((sequence) => sequence + 1);
   }
 
+  function onSliderPointerDown(event: PointerEvent<HTMLDivElement>) {
+    if (
+      !hasMultipleImages ||
+      isSliding ||
+      event.button !== 0 ||
+      !window.matchMedia("(min-width: 1025px)").matches
+    ) {
+      return;
+    }
+
+    dragRef.current = {
+      active: true,
+      startX: event.clientX,
+      pointerId: event.pointerId,
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
+    setIsDragging(true);
+    setDragOffset(0);
+  }
+
+  function onSliderPointerMove(event: PointerEvent<HTMLDivElement>) {
+    if (!dragRef.current.active) {
+      return;
+    }
+
+    setDragOffset(event.clientX - dragRef.current.startX);
+  }
+
+  function onSliderPointerUp(event: PointerEvent<HTMLDivElement>) {
+    if (!dragRef.current.active) {
+      return;
+    }
+
+    const delta = event.clientX - dragRef.current.startX;
+    dragRef.current = {active: false, startX: 0, pointerId: null};
+    setIsDragging(false);
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+
+    const threshold = 56;
+    if (Math.abs(delta) >= threshold) {
+      setDragOffset(0);
+      goTo(delta < 0 ? "next" : "prev");
+      return;
+    }
+
+    setDragOffset(0);
+  }
+
   const loopedImages =
     sliderImages.length > 0
       ? [
@@ -175,17 +233,29 @@ export function ActivitySlider({images}: ActivitySliderProps) {
         )}
 
         <div className="absolute left-[2.2vw] right-0 top-[24.08%]">
-          <div className="activity-slider-viewport overflow-hidden [transform:translateZ(0)]">
+          <div
+            className={`activity-slider-viewport overflow-hidden [transform:translateZ(0)] ${
+              hasMultipleImages
+                ? isDragging
+                  ? "cursor-grabbing"
+                  : "cursor-grab"
+                : ""
+            }`}
+            onPointerDown={onSliderPointerDown}
+            onPointerMove={onSliderPointerMove}
+            onPointerUp={onSliderPointerUp}
+            onPointerCancel={onSliderPointerUp}
+          >
             {loopedImages.length > 0 ? (
               <div
-                className={`flex overflow-visible ${
-                  isTrackAnimated
+                className={`flex touch-none overflow-visible select-none ${
+                  isTrackAnimated && !isDragging
                     ? "transition-transform duration-300 ease-in-out"
                     : ""
                 }`}
                 style={{
                   gap: "min(1.25vw, 24px)",
-                  transform: `translate3d(calc(-${trackIndex} * (min(63.75vw, 1224px) + min(1.25vw, 24px))), 0, 0)`,
+                  transform: `translate3d(calc(-${trackIndex} * (min(63.75vw, 1224px) + min(1.25vw, 24px)) + ${dragOffset}px), 0, 0)`,
                 }}
               >
                 {loopedImages.map((image, index) => (
@@ -254,8 +324,9 @@ function SliderImage({
         alt={image.caption || "활동 사진"}
         fill
         priority={priority}
+        draggable={false}
         sizes="(min-width: 1025px) min(63.75vw, 1224px), 100vw"
-        className="rounded-[20px] object-cover"
+        className="pointer-events-none rounded-[20px] object-cover"
         style={{
           borderRadius: 20,
           willChange: "transform",

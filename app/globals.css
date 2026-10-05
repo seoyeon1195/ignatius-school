@@ -308,8 +308,8 @@ body {
     max-width: 480px !important;
     aspect-ratio: 1080 / 1920;
     /*
-      Base +5px right; --recruit-stand-gap-shift adds more only when the
-      CTA↔graphic gap would drop below 15px (set from RecruitExperience).
+      Base +5px right; --recruit-stand-gap-shift pushes further right only when
+      CTA↔graphic gap would drop below 12px (set from RecruitExperience).
     */
     transform: translateX(calc(5px + var(--recruit-stand-gap-shift, 0px)));
     pointer-events: none;
@@ -329,7 +329,8 @@ body {
     aspect-ratio: 1059.16 / 1856.12;
     max-width: none;
     margin: 0;
-    transform: none;
+    /* Extra X shift when account typography would get closer than 12px. */
+    transform: translateX(var(--donate-pencil-gap-shift, 0px));
     pointer-events: none;
   }
 
@@ -343,43 +344,28 @@ body {
     }
   }
 
+  /* Large bottom CTAs: independent of graphic width; never mid-token wrap. */
   .recruit-cta-mobile,
   .donate-account-mobile {
-    max-width: 100%;
-    min-width: 0;
-    overflow-wrap: anywhere;
+    width: fit-content;
+    max-width: none;
+    min-width: max-content;
+    flex-shrink: 0;
+    overflow-wrap: normal;
     word-break: keep-all;
+    white-space: normal;
   }
 
   .recruit-cta-mobile .cta-line,
   .recruit-cta-mobile .cta-phone,
+  .recruit-cta-mobile .cta-handle,
   .donate-account-mobile .cta-line,
   .donate-account-mobile .cta-account {
     display: inline-block;
-    max-width: 100%;
+    max-width: none;
     white-space: nowrap;
+    overflow-wrap: normal;
     word-break: keep-all;
-  }
-
-  /* Long unbreakable tokens: wrap instead of clipping past the right edge */
-  .recruit-cta-mobile .cta-handle,
-  .donate-account-mobile .cta-line {
-    white-space: normal;
-    overflow-wrap: anywhere;
-    word-break: break-all;
-  }
-
-  @media (max-width: 340px) {
-    .recruit-cta-mobile .cta-phone,
-    .donate-account-mobile .cta-account {
-      white-space: normal;
-    }
-
-    .recruit-cta-mobile .cta-phone-seg,
-    .donate-account-mobile .cta-account-seg {
-      display: inline-block;
-      white-space: nowrap;
-    }
   }
 }
 

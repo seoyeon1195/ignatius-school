@@ -6,7 +6,7 @@ import {useEffect, useLayoutEffect, useRef, useState} from "react";
 
 type RecruitMode = "student" | "teacher";
 
-const RECRUIT_STAND_MIN_GAP_PX = 15;
+const RECRUIT_STAND_MIN_GAP_PX = 12;
 
 export function RecruitExperience() {
   const [mode, setMode] = useState<RecruitMode>("student");
@@ -153,7 +153,7 @@ export function RecruitExperience() {
 
           <div
             ref={mobileCtaRef}
-            className={`recruit-cta-mobile relative z-20 mt-auto min-h-fit w-fit max-w-[340px] shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-4 text-left text-[30px] leading-[1.25] text-transparent transition-opacity duration-[1600ms] ease-in-out tab:max-w-[min(52vw,520px)] tab:text-[clamp(30px,3.9vw,40px)] ${
+            className={`recruit-cta-mobile relative z-20 mt-auto min-h-fit shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text pt-4 text-left text-[30px] leading-[1.25] text-transparent transition-opacity duration-[1600ms] ease-in-out tab:text-[clamp(30px,3.9vw,40px)] ${
               isBottomVisible ? "opacity-100" : "opacity-0"
             }`}
           >

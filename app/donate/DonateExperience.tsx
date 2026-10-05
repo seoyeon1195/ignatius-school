@@ -2,12 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
+
+const DONATE_PENCIL_MIN_GAP_PX = 12;
 
 export function DonateExperience() {
   const [isBodyVisible, setIsBodyVisible] = useState(false);
   const [isAccountVisible, setIsAccountVisible] = useState(false);
   const [showPencilVariation, setShowPencilVariation] = useState(false);
+  const mobileAccountRef = useRef<HTMLDivElement>(null);
+  const mobilePencilRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const HOLD_MS = 5500;
@@ -31,6 +35,42 @@ export function DonateExperience() {
       }
     };
   }, []);
+
+  useLayoutEffect(() => {
+    const pencil = mobilePencilRef.current;
+    const account = mobileAccountRef.current;
+    if (!pencil || !account) {
+      return;
+    }
+
+    function updatePencilGapShift() {
+      if (window.matchMedia("(min-width: 1025px)").matches) {
+        pencil!.style.setProperty("--donate-pencil-gap-shift", "0px");
+        return;
+      }
+
+      pencil!.style.setProperty("--donate-pencil-gap-shift", "0px");
+      const gap =
+        pencil!.getBoundingClientRect().left -
+        account!.getBoundingClientRect().right;
+      const extra =
+        gap < DONATE_PENCIL_MIN_GAP_PX ? DONATE_PENCIL_MIN_GAP_PX - gap : 0;
+      pencil!.style.setProperty("--donate-pencil-gap-shift", `${extra}px`);
+    }
+
+    updatePencilGapShift();
+    const frame = window.requestAnimationFrame(updatePencilGapShift);
+    const observer = new ResizeObserver(updatePencilGapShift);
+    observer.observe(pencil);
+    observer.observe(account);
+    window.addEventListener("resize", updatePencilGapShift);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("resize", updatePencilGapShift);
+    };
+  }, [isAccountVisible, showPencilVariation]);
 
   return (
     <main className="relative min-h-[100svh] overflow-x-hidden bg-black text-white [font-family:var(--font-gowun-batang)] pc:overflow-hidden">
@@ -71,7 +111,7 @@ export function DonateExperience() {
           aria-hidden="true"
           className="relative z-0 mt-8 h-[min(62svh,580px)] w-[calc(100%+12px)] shrink-0 [clip-path:inset(-20%_0_-8%_-40%)] tab:mt-10 tab:h-[min(62svh,580px)]"
         >
-          <div className="donate-pencil-graphic absolute">
+          <div ref={mobilePencilRef} className="donate-pencil-graphic absolute">
             <div
               className={`fluid-gradient-motion absolute inset-0 bg-[linear-gradient(135deg,#d9e6ca_0%,#9fcaff_32%,#eff7b8_58%,#b7def0_78%,#d9e6ca_100%)] [mask-image:url('/graphics/pencil%20holder.svg')] [mask-position:left_top] [mask-repeat:no-repeat] [mask-size:100%_100%] transition-opacity duration-[1000ms] ease-in-out ${
                 showPencilVariation ? "opacity-0" : "opacity-100"
@@ -86,6 +126,7 @@ export function DonateExperience() {
         </div>
 
         <div
+          ref={mobileAccountRef}
           className={`donate-account-mobile relative z-20 mt-10 min-h-fit shrink-0 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[30px] leading-[1.3] text-transparent transition-opacity duration-[1600ms] ease-in-out tab:mt-10 tab:text-[clamp(30px,3.9vw,40px)] ${
             isAccountVisible ? "opacity-100" : "opacity-0"
           }`}
