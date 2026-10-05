@@ -209,29 +209,31 @@ export function ActivitySlider({images}: ActivitySliderProps) {
             : "pointer-events-none translate-y-6 opacity-0"
         }`}
       >
-        {hasMultipleImages && (
-          <div className="absolute right-[2vw] top-[17.9%] z-10 flex gap-5 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(20px,1.98vw,48px)] text-transparent">
-            <button
-              type="button"
-              onClick={() => goTo("prev")}
-              className="cursor-pointer"
-            >
-              이전
-            </button>
-            <button
-              type="button"
-              onClick={() => goTo("next")}
-              className="cursor-pointer"
-            >
-              다음
-            </button>
-          </div>
-        )}
-
         <div className="absolute left-[2.2vw] right-0 top-[16.4%] z-10 flex flex-col gap-[12px]">
-          <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(29px,3vw,92px)] leading-none text-transparent">
-            활동 사진
-          </h1>
+          <div className="relative z-20 flex items-end justify-between pr-[1.8vw]">
+            <h1 className="bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(29px,3vw,92px)] leading-none text-transparent">
+              활동 사진
+            </h1>
+
+            {hasMultipleImages && (
+              <div className="flex gap-5 bg-gradient-to-r from-[#d9e6ca] to-[#acd5f1] bg-clip-text text-[clamp(20px,1.98vw,48px)] leading-none text-transparent">
+                <button
+                  type="button"
+                  onClick={() => goTo("prev")}
+                  className="cursor-pointer"
+                >
+                  이전
+                </button>
+                <button
+                  type="button"
+                  onClick={() => goTo("next")}
+                  className="cursor-pointer"
+                >
+                  다음
+                </button>
+              </div>
+            )}
+          </div>
 
           <div
             className={`activity-slider-viewport overflow-hidden [transform:translateZ(0)] ${
