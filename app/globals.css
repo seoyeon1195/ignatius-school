@@ -132,6 +132,9 @@ body {
     transform: translateZ(0);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    /* 1.5 slides visible (1025–1279): 1.5×W + gap ≈ viewport strip */
+    --activity-slide-w: min(63.75vw, 1224px);
+    --activity-slide-gap: min(1.25vw, 24px);
   }
 
   .activity-slide-card {
@@ -154,6 +157,17 @@ body {
     transform: translateZ(0);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+  }
+
+  .activity-slide-item {
+    width: var(--activity-slide-w);
+  }
+}
+
+@media (min-width: 1280px) {
+  .activity-slider-viewport {
+    /* 2.5 slides visible: 2.5×W + 2×gap ≈ 97.8vw strip (left 2.2vw gutter) */
+    --activity-slide-w: min(38.12vw, 732px);
   }
 }
 

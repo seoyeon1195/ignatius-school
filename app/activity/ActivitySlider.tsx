@@ -256,14 +256,14 @@ export function ActivitySlider({images}: ActivitySliderProps) {
                     : ""
                 }`}
                 style={{
-                  gap: "min(1.25vw, 24px)",
-                  transform: `translate3d(calc(-${trackIndex} * (min(63.75vw, 1224px) + min(1.25vw, 24px)) + ${dragOffset}px), 0, 0)`,
+                  gap: "var(--activity-slide-gap)",
+                  transform: `translate3d(calc(-${trackIndex} * (var(--activity-slide-w) + var(--activity-slide-gap)) + ${dragOffset}px), 0, 0)`,
                 }}
               >
                 {loopedImages.map((image, index) => (
                   <div
                     key={`${image._key}-${index}`}
-                    className="w-[min(63.75vw,1224px)] shrink-0"
+                    className="activity-slide-item shrink-0"
                   >
                     <SliderImage
                       image={image}
