@@ -67,7 +67,11 @@ export function RecruitExperience() {
     }
 
     function updateStandGapShift() {
-      if (window.matchMedia("(min-width: 1025px)").matches) {
+      if (
+        window.matchMedia("(min-width: 1025px)").matches ||
+        window.matchMedia("(max-width: 480px)").matches
+      ) {
+        // ≤480px: keep base crop/translate only — no extra gap-shift push.
         stand!.style.setProperty("--recruit-stand-gap-shift", "0px");
         return;
       }
@@ -240,7 +244,7 @@ function RecruitBody({
         className={`break-keep tracking-[-0.02em] ${
           isPc
             ? "mt-[12px] text-[clamp(16px,1.6vw,36px)] leading-[calc(1.6em-5px)]"
-            : "mt-[17px] text-[16px] leading-[calc(1.6em-5px)] tab:mt-[clamp(17px,2.2vh,22px)] tab:text-[clamp(16px,2.05vw,20px)]"
+            : "mt-[17px] text-[16px] leading-[calc(1.6em-2px)] tab:mt-[clamp(17px,2.2vh,22px)] tab:text-[clamp(16px,2.05vw,20px)]"
         }`}
       >
         <p

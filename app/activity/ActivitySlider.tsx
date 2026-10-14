@@ -327,7 +327,7 @@ function SliderImage({
         fill
         priority={priority}
         draggable={false}
-        sizes="(min-width: 1025px) min(63.75vw, 1224px), 100vw"
+        sizes="(min-width: 1280px) min(38.12vw, 680px), (min-width: 1025px) min(63.75vw, 880px), min(calc(100vw - 24px), 960px)"
         className="pointer-events-none rounded-[20px] object-cover"
         style={{
           borderRadius: 20,
@@ -416,13 +416,13 @@ function MobileActivityItem({
       }`}
       style={{scrollSnapAlign: "start", scrollSnapStop: "always"}}
     >
-      <div className="relative aspect-[3/2] w-full overflow-hidden rounded-[10px] [transform:translateZ(0)] [isolation:isolate]">
+      <div className="relative aspect-[1480/800] w-full max-w-[960px] overflow-hidden rounded-[10px] [transform:translateZ(0)] [isolation:isolate]">
         <Image
           src={urlFor(image).auto("format").quality(90).url()}
           alt={image.caption || `활동 사진 ${index + 1}`}
           fill
           priority={index === 0}
-          sizes="(max-width: 393px) calc(100vw - 24px), 393px"
+          sizes="min(calc(100vw - 24px), 960px)"
           className="rounded-[10px] object-cover"
           style={{borderRadius: 10}}
         />

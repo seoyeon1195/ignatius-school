@@ -44,7 +44,11 @@ export function DonateExperience() {
     }
 
     function updatePencilGapShift() {
-      if (window.matchMedia("(min-width: 1025px)").matches) {
+      if (
+        window.matchMedia("(min-width: 1025px)").matches ||
+        window.matchMedia("(max-width: 480px)").matches
+      ) {
+        // ≤480px: keep base crop/translate only — no extra gap-shift push.
         pencil!.style.setProperty("--donate-pencil-gap-shift", "0px");
         return;
       }
@@ -87,7 +91,7 @@ export function DonateExperience() {
           </h1>
 
           <div
-            className={`mt-[18px] break-keep text-[16px] leading-[calc(1.6em-5px)] tracking-[-0.02em] transition-opacity duration-[1600ms] ease-in-out tab:mt-[clamp(18px,2.2vh,24px)] tab:text-[clamp(16px,2.05vw,20px)] ${
+            className={`mt-[18px] break-keep text-[16px] leading-[calc(1.6em-2px)] tracking-[-0.02em] transition-opacity duration-[1600ms] ease-in-out tab:mt-[clamp(18px,2.2vh,24px)] tab:text-[clamp(16px,2.05vw,20px)] ${
               isBodyVisible ? "opacity-100" : "opacity-0"
             }`}
           >
